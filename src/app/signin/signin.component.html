@@ -1,0 +1,115 @@
+<div class="bgi">
+
+    <div class="overlay">
+
+        <div class="container">
+
+            <div class="row">
+
+                <!-- SBMS Logo and Information -->
+                <div class="col-6 col-sm-6 col-md-12 col-lg-6 col-xl-6 my-auto resdiv">
+                    <img src="assets/Images/logo.png" class="img-fluid" width="65" alt="SBMS-Logo">
+                    <div class="info mb-3">
+                        <h1 class="m-0">SBMS</h1>
+                        <span>Smart Battery Management System</span>
+
+                        <div class="mt-4">
+                            <p> <i class="fas fa-envelope mr-2"></i> info@dristia.com </p>
+                            <p> <i class="fas fa-phone mr-2"></i> +0 000-000-0000 </p>
+                            <p>922 Dale Avenue, Seattle, Washington, 98109.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sign In Form -->
+                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 my-auto">
+
+                    <!-- Form Starts -->
+                    <form class="p-5 text-center" [formGroup]="signinForm" (submit)="onSubmit()">
+
+                        <div class="my-4 text-center">
+                            <h1 class="my-2">Sign In</h1>
+                            <p class="mb-5">Sign in to your account</p>
+                        </div>
+
+                        <!-- User name -->
+                        <div class="my-4 text-center">
+                            <input type="text" placeholder="{{this.validation.loginId.label}}" formControlName="loginId"
+                                class="form-control text-center input-custom-control" autocomplete="off"
+                                maxlength="{{this.validation.loginId.maxLength}}">
+                            <div *ngIf="f.loginId.invalid && f.loginId.touched" class="text-danger">
+                                <div *ngIf="f.loginId.errors?.required">
+                                    <small>{{this.validation.loginId.err_msg_required}}</small>
+                                </div>
+                                <div *ngIf="f.loginId.errors?.minlength">
+                                    <small>{{this.validation.loginId.err_msg_minLength}}</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="my-4 text-center">
+                            <input type="password" class="form-control text-center input-custom-control"
+                                formControlName="password" autocomplete="off"
+                                placeholder="{{this.validation.password.label}}"
+                                maxlength="{{this.validation.password.maxLength}}">
+                            <div *ngIf="f.password.invalid && f.password.touched" class="text-danger">
+                                <div *ngIf="f.password.errors?.required">
+                                    <small>{{this.validation.password.err_msg_required}}</small>
+                                </div>
+                                <div *ngIf="f.password.errors?.minlength">
+                                    <small>{{this.validation.password.err_msg_minLength}}</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="row my-4 p-3">
+                            <button type="submit" class="btn btn-signin btn-block"
+                                [disabled]="!signinForm.valid || loading">
+                                <span *ngIf="loading" class="spinner-border spinner-border-sm" (click)="onSubmit()"
+                                    role="status" aria-hidden="true"></span>
+                                Sign In
+                            </button>
+                        </div>
+
+                        <div class="text-center">
+                            <!-- <a [routerLink]="['/signup']" routerLinkActive="router-link-active">Forgot Password </a> -->
+                            <!-- <p class="my-3" style="font-size: 16px;">Not a member yet?
+                <a [routerLink]="['/signup']" routerLinkActive="router-link-active"> Get an ID </a>
+              </p> -->
+                        </div>
+
+                    </form>
+
+                    <!-- Form Ends -->
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- footer -->
+        <div class="container-fluid footer resdiv">
+            <div class="row d-flex" style="justify-content: space-between;">
+                <div class="info col-6 text-left" style="justify-content: space-between;">
+                    © 2020 dristia.com.
+                </div>
+                <div class="col-6 text-right mb-3">
+                    <a class="disable mr-2">
+                        <img src="assets/Images/youtube-footer.svg" width="25" height="25" alt="Youtube">
+                    </a>
+                    <a class="disable mr-2">
+                        <img src="assets/Images/twitter-footer.svg" width="25" height="25" alt="Twitter">
+                    </a>
+                    <a class="disable mr-2">
+                        <img src="assets/Images/facebook-footer.svg" width="25" height="25" style="background: #fff;"
+                            alt="Facebook">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

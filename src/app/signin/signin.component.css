@@ -1,0 +1,245 @@
+* {
+  font-size: 16px;
+}
+
+.bgi {
+  background: url(/assets/Images/SignIn_BGI.jpg);
+  background-size: 100% 100%;
+  min-height: 100vh;
+
+}
+
+.overlay {
+  background: rgba(10, 10, 10, 0.74);
+  min-height: 100vh;
+}
+
+.overlay>.container>.row {
+  min-height: 100vh;
+
+}
+
+.info {
+  color: #E0E0E0;
+}
+
+.info h1 {
+  font-size: 62px;
+  font-weight: 700;
+  color: #f79817;
+}
+
+.info span {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.info p {
+  margin-bottom: 7px !important;
+  font-size: 14px;
+}
+
+.fa-envelope,
+.fa-phone {
+  color: #fff;
+  font-size: 14px;
+}
+
+form {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .2), 0 0 2px 0 rgba(0, 0, 0, .2);
+}
+
+form h1 {
+  color: #374559;
+  font-size: 35px;
+  font-weight: 800;
+}
+
+form p {
+  color: #828282;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+form div a {
+  color: #f79817;
+  font-weight: bold;
+}
+
+.input-custom-control {
+  border: 1px solid #CCC;
+  border-radius: 5px !important;
+  height: 50px;
+  color: #828282;
+}
+
+::placeholder {
+  color: #BDBDBD !important;
+  font-size: 16px;
+}
+
+.btn-signin {
+  border-radius: 5px !important;
+  background-color: #374559 !important;
+  color: #f2f2f2 !important;
+  font-weight: 500;
+  height: 50px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.27), 0 0 2px 0 rgba(0, 0, 0, 0.27);
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+}
+
+.icons {
+  font-size: 30px;
+}
+
+small {
+  font-size: 12px;
+}
+
+/* GalaxyNote3 / GalaxyNote9 / Galaxy S5 / Galaxy S9/S9+ / Iphone 5/SE / Iphone (6/7/8) / Iphone (6/7/8 Plus)
+ / Iphone X/XS / Iphone XR / Iphone XS Max / LG Optimus L70 / Nexus 5X / Nexus 6P / Pixel 2 / Pixel 2XL*/
+@media (min-width: 320px) and (max-width: 480px) {
+  .bgi {
+    background: #fff;
+    background-size: 100% 100%;
+    overflow-x: hidden;
+  }
+
+  .overlay {
+    background: #fff;
+    height: auto;
+  }
+
+  .overlay>.container>.row {
+    height: auto;
+  }
+
+  .resdiv {
+    display: none;
+  }
+
+  .p-5 {
+    padding: 15px !important;
+  }
+
+  .my-auto {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+  }
+
+  form {
+    background-color: #fff;
+    box-shadow: none !important;
+    border-bottom: none !important;
+  }
+
+}
+
+/* Nexus 7 */
+@media (min-width: 481px) and (max-width: 767px) {
+  .bgi {
+    background: #fff;
+    background-size: 100% 100%;
+    overflow-x: hidden;
+  }
+
+  .overlay {
+    background: #fff;
+    height: auto;
+  }
+
+  .overlay>.container>.row {
+    height: auto;
+  }
+
+  .resdiv {
+    display: none;
+  }
+
+  .p-5 {
+    padding: 15px !important;
+  }
+
+  .my-auto {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+  }
+
+  form {
+    background-color: #fff;
+    box-shadow: none !important;
+    border-bottom: none !important;
+  }
+
+}
+
+/* Ipad / Ipad Mini /   */
+@media (min-width: 768px) and (max-width: 799px) {
+  .bgi {
+    background: #fff;
+    background-size: 100% 100%;
+    overflow-x: hidden;
+  }
+
+  .overlay {
+    background: #fff;
+    height: auto;
+  }
+
+  .overlay>.container>.row {
+    height: auto;
+  }
+
+  .container {
+    padding: 0px;
+  }
+
+  .resdiv {
+    display: none;
+  }
+
+  .my-auto {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+  }
+
+  form {
+    background-color: #fff;
+    box-shadow: none !important;
+    border-bottom: none !important;
+  }
+}
+
+/* Ipad Pro(10.5 Inch) / Nexus 10*/
+@media (min-width: 800px) and (max-width: 1000px) {
+  .resdiv {
+    text-align: center !important;
+  }
+
+  .info {
+    color: #E0E0E0;
+    padding: 0px 0px 0px 0px !important;
+  }
+
+}
+
+/* Ipad Pro(12.9 Inch) */
+@media (min-width: 1001px) and (max-width: 1024px) {
+  .resdiv {
+    text-align: center !important;
+  }
+
+  .info {
+    color: #E0E0E0;
+    padding: 0px 0px 0px 0px !important;
+  }
+}
+
+/* Laptop with MDPI Screen / Laptop With Touch / */
+@media (min-width: 1025px) and (max-width: 1280px) {}

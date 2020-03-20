@@ -18,14 +18,15 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
               "src/styles.css",
-               "node_modules/bootstrap/dist/css/bootstrap.min.css"
+               "node_modules/ngx-toastr/toastr.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.js",
@@ -46,7 +47,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -125,6 +125,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "sbmsadminv2"
+    }
+  },
+  "defaultProject": "sbmsadminv2",
+  "cli": {
+    "analytics": "9a5cb2c5-2fb8-47be-ba21-d726d42ced48"
+  }
 }
