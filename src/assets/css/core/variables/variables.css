@@ -1,0 +1,14 @@
+:root {
+  /* nav bar variables */
+  --navBar-bg: #144A90;
+  --navBar-color: #F2F2F2;
+  --navBar-height: 70px;
+  --navBar-title: 25px;
+  --narBar-bottom-margin: 8px;
+
+  /* side bar variables */
+  --sideBar-logo-bg: #374559;
+  --sideBar-list-bg: #374559;
+  --sideBar-list-color: #bdbdbd;
+  --sideBar-width: 250px;
+}

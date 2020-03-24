@@ -10,8 +10,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [SigninComponent],
   imports: [
     CommonModule,
-    SigninRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SigninRoutingModule
   ]
 })
 export class SigninModule { }

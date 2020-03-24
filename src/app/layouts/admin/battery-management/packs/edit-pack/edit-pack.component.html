@@ -1,0 +1,92 @@
+<div class="justify-content-center">
+    <form class="col-12" [formGroup]="updatePack" (ngSubmit)="editPack()">
+        <!-- 1st Row -->
+        <div class="form-group row">
+
+            <!-- Label -->
+            <div class="col-3">
+                <label for="packName" class="col-form-label">{{this.validation.packName.label}}</label>
+            </div>
+
+            <!-- Input Control -->
+            <div class="col-9">
+                <input type="text" class="form-control" id="packName" formControlName="packName"
+                    placeholder="{{this.validation.packName.label}}" autocomplete="off"
+                    maxLength={{this.validation.packName.maxLength}}>
+
+                <!-- Error Messages -->
+                <div *ngIf="f.packName.invalid && f.packName.touched" class="text-danger">
+                    <div *ngIf="f.packName.errors?.required">
+                        <small>{{this.validation.packName.err_msg_required}}</small>
+                    </div>
+                    <div *ngIf="f.packName.errors?.minlength">
+                        <small>{{this.validation.packName.err_msg_minLength}}</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- 2nd row -->
+        <div class="form-group row">
+
+            <!-- Label -->
+            <div class="col-3">
+                <label for="packDescription" class="col-form-label">{{this.validation.packDescription.label}}</label>
+            </div>
+
+            <!-- Input Control -->
+            <div class="col-9">
+
+                <textarea type="text" class="form-control" id="packDescription" formControlName="packDescription"
+                    placeholder="{{this.validation.packDescription.label}}" autocomplete="off"
+                    maxLength={{this.validation.packDescription.maxLength}} cols="30" rows="4">
+                    </textarea>
+
+                <!-- Error Messages -->
+                <div *ngIf="f.packDescription.invalid && f.packDescription.touched" class="text-danger">
+                    <div *ngIf="f.packDescription.errors?.required">
+                        <small>{{this.validation.packDescription.err_msg_required}}</small>
+                    </div>
+                    <div *ngIf="f.packDescription.errors?.minlength">
+                        <small>{{this.validation.packDescription.err_msg_minLength}}</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- 3rd row -->
+        <div class="form-group row">
+
+            <!-- Label -->
+            <div class="col-3">
+                <label for="siteName" class="col-form-label">{{this.validation.siteName.label}}</label>
+            </div>
+
+            <!-- Input Control -->
+            <div class="col-9">
+                <!-- dropdown -->
+                <select id="siteName" name="siteName" class="form-control text-center" formControlName="siteName">
+                    <option value="">Select SiteName</option>
+                    <option *ngFor="let site of sites" [value]="site.siteName" class="form-control-sm">
+                        {{site.siteName}}
+                    </option>
+                </select>
+
+                <!-- Error Messages -->
+                <div *ngIf="f.siteName.invalid && f.siteName.touched" class="text-danger">
+                    <div *ngIf="f.siteName.errors?.required">
+                        <small>{{this.validation.siteName.err_msg_required}}</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-sm float-right">Update</button>
+    </form>
+</div>

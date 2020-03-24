@@ -1,0 +1,124 @@
+<!-- Form Starts -->
+<form [formGroup]="editSite" (ngSubmit)="EditSite()">
+
+    <!-- 1st Row -->
+    <!-- Country -->
+    <div class="form-group row">
+
+        <!-- Label -->
+        <div class="col-2">
+            <label for="country" class="col-form-label">{{this.validations.country.label}}</label>
+        </div>
+
+        <!-- select control -->
+        <div class="col-10">
+            <select id="country" name="country" class="form-control" formControlName="country"
+                (change)="Filter($event.target.value)">
+                <option style="font-size: 16px !important;" value="">Select country</option>
+                <option *ngFor="let country of countries" [value]="country.name" class="form-control-sm">
+                    {{country.name}}
+                </option>
+            </select>
+
+            <!-- Error Messages -->
+            <div *ngIf="f.country.invalid && f.country.touched" class="text-danger">
+                <div *ngIf="f.country.errors?.required">
+                    <small>{{this.validations.country.err_msg_required}}</small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 2nd Row -->
+    <!-- State -->
+    <div class="form-group row">
+
+        <!-- Label -->
+        <div class="col-2">
+            <label for="state" class="col-form-label">{{this.validations.state.label}}</label>
+        </div>
+
+        <!-- select control for state -->
+        <div class="col-10">
+            <select id="state" name="state" class="form-control input-custom-control" formControlName="state"
+                (change)="selectedState($event.target.value)">
+                <option *ngFor="let state of states" [value]="state.name" class="form-control input-custom-control-sm">
+                    {{state.name}}
+                </option>
+            </select>
+
+            <!-- Error Messages -->
+            <div *ngIf="f.state.invalid && f.state.touched" class="text-danger">
+                <div *ngIf="f.state.errors?.required">
+                    <small>{{this.validations.state.err_msg_required}}</small>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- 3rd Row -->
+    <!-- City -->
+    <div class="form-group row">
+
+        <!-- Label -->
+        <div class="col-2">
+            <label for="city" class="col-form-label">{{this.validations.city.label}}</label>
+        </div>
+
+        <!-- Select control for city -->
+        <div class="col-10">
+            <select id="city" name="city" class="form-control" formControlName="city">
+                <option *ngFor="let city of cities" [value]="city.name" class="form-control input-custom-control-sm">
+                    {{city.name}}
+                </option>
+            </select>
+
+            <!-- Error Messages -->
+            <div *ngIf="f.city.invalid && f.city.touched" class="text-danger">
+                <div *ngIf="f.city.errors?.required">
+                    <small>{{this.validations.city.err_msg_required}}</small>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- 4th row -->
+    <!-- Site name -->
+    <div class="form-group row">
+        <!-- Label -->
+        <div class="col-2">
+            <label for="siteName" class="col-form-label">{{this.validations.siteName.label}}</label>
+        </div>
+        <!-- Input control for sitename -->
+        <div class="col-10">
+            <input type="text" class="form-control" name="siteName" id="siteName" formControlName="siteName"
+                placeholder="Site Name" placeholder="{{this.validations.siteName.label}}" autocomplete="off"
+                maxlength={{this.validations.siteName.maxLength}}>
+
+            <!-- Error Messages -->
+            <div *ngIf="f.siteName.invalid && f.siteName.touched" class="text-danger">
+                <div *ngIf="f.siteName.errors?.required">
+                    <small>{{this.validations.siteName.err_msg_required}}</small>
+                </div>
+                <div *ngIf="f.siteName.errors?.minlength">
+                    <small>{{this.validations.siteName.err_msg_minLength}}</small>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 6th Row Update Button -->
+    <div class="d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary btn-sm text-capitalize" [disabled]="editSite.invalid">
+            Update
+        </button>
+    </div>
+
+</form>
+<!-- Form Ends -->

@@ -1,0 +1,147 @@
+<h3 class="text-capitalize text-center p-2">Users List</h3>
+<div class="container-fluid table-responsive">
+  <table class="table table-striped table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">User Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Country</th>
+        <th scope="col">State</th>
+        <th scope="col">City</th>
+        <th scope="col">Role</th>
+        <th scope="col">Assets</th>
+        <th scope="col">Permissions</th>
+        <th scope="col" *ngIf="enable_buttons.includes('P000010') || enable_buttons.includes('P000011')">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="userData.length ==0">
+        <td colspan="10" class="text-center">
+          No Users
+        </td>
+      </tr>
+      <tr *ngFor="let user of userData">
+        <td>{{user.userName}}</td>
+        <td>{{user.emailId}}</td>
+        <td>{{user.phoneNumber}}</td>
+        <td>{{user.country}}</td>
+        <td>{{user.state}}</td>
+        <td>{{user.city}}</td>
+        <td>{{user.role}}</td>
+        <td class="d-flex">
+          <div *ngFor="let item of user.assetCategoryId">
+            <span class="mr-2">{{item | assetname}}</span>
+          </div>
+        </td>
+        <td>
+          <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target=".viewpermission"
+            data-backdrop="static" data-keyboard="false" (click)="getpermissions(user)">
+            View
+          </button>
+        </td>
+        <td *ngIf="enable_buttons.includes('P000010') || enable_buttons.includes('P000011')">
+          <button type="button" class="btn btn-outline-warning btn-sm mr-2" data-toggle="modal" data-backdrop="static"
+            data-keyboard="false" data-target=".bd-example-modal-lg" (click)="updateUser(user)"
+            *ngIf="enable_buttons.includes('P000010')">
+            Edit
+          </button>
+          <button class="btn btn-outline-danger btn-sm" (click)="deleteUser(user)" title="Delete" data-toggle="modal"
+            data-target="#deleteUser" data-backdrop="static" data-keyboard="false"
+            *ngIf="enable_buttons.includes('P000011')">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Edit modal -->
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-info">Edit User</h5>
+        <button type="button" class="close text-success" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&#10005;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-edit-user></app-edit-user>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Delete modal -->
+<div class="modal fade" id="deleteUser" tabindex="-1" role="dialog" aria-labelledby="tryModalTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title text-info">Do you want to delete User - <span class="text-danger">{{name}}</span></h5>
+        <button type="button" class="close text-success" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&#10005;</span>
+        </button>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-outline-danger btn-sm" title="Delete" data-dismiss="modal"
+          (click)="delete(delUser.id)">Delete</button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- View Permissions -->
+<div class="modal fade viewpermission" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+
+    <div class="modal-content">
+
+      <div class="modal-header ">
+        <h5 class="modal-title text-info">Permissions List</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="text-success">&#10005;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <table class="table table-striped table-hover">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Permission Access</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let per of userPermissoins">
+                  <td>{{per.name}}</td>
+                  <td>{{per.description}}</td>
+                  <td>{{per.permissionAccess}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
+      </div>
+
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,91 @@
+<!-- Component Title -->
+<h3 class="text-capitalize text-center p-2">Create Asset Type</h3>
+
+<!-- Form starts -->
+<form class="p-2" [formGroup]="addAssetType" (ngSubmit)="createAssetType()">
+
+    <!-- 1st Row -->
+    <div class="form-group row">
+
+        <!-- Label -->
+        <div class="col-2">
+            <label for="assetType" class="col-form-label">{{this.validations.assetType.label}}</label>
+        </div>
+
+        <!-- Input Control -->
+        <div class="col-10">
+            <input type="text" class="form-control" id="assetType" formControlName="assetType"
+                placeholder="{{this.validations.assetType.label}}" autocomplete="off"
+                maxlength="{{this.validations.assetType.maxLength}}">
+
+            <!-- Error Messages -->
+            <div *ngIf="f.assetType.invalid && f.assetType.touched" class="text-danger">
+                <div *ngIf="f.assetType.errors?.required">
+                    <small>{{this.validations.assetType.err_msg_required}}</small>
+                </div>
+                <div *ngIf="f.assetType.errors?.minlength">
+                    <small>{{this.validations.assetType.err_msg_minLength}}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2nd Row -->
+    <div class="form-group row">
+
+        <!-- Label -->
+        <div class="col-2">
+            <label for="description" class="col-form-label">{{this.validations.description.label}}</label>
+        </div>
+
+        <!-- Textarea Control -->
+        <div class="col-10">
+            <textarea class="form-control" id="description" cols="30" rows="7" formControlName="description"
+                placeholder="{{this.validations.description.label}}" autocomplete="off"
+                maxlength="{{this.validations.description.maxLength}}">
+      </textarea>
+
+            <!-- Error Messages -->
+            <div *ngIf="f.description.invalid && f.description.touched" class="text-danger">
+                <div *ngIf="f.description.errors?.required">
+                    <small>{{this.validations.description.err_msg_required}}</small>
+                </div>
+                <div *ngIf="f.description.errors?.minlength">
+                    <small>{{this.validations.description.err_msg_minLength}}</small>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- 3rd row -->
+    <div class="form-group row">
+        <!-- Label -->
+        <div class="col-2">
+            <label for="assetCategoryName" class="col-form-label">{{this.validations.assetCategoryName.label}}</label>
+        </div>
+        <!-- Input Control -->
+        <div class="col-10">
+            <input type="text" class="form-control" id="assetType" formControlName="assetCategoryName"
+                placeholder="{{this.validations.assetCategoryName.label}}" autocomplete="off"
+                maxlength="{{this.validations.assetCategoryName.maxLength}}">
+
+            <!-- Error Messages -->
+            <div *ngIf="f.assetCategoryName.invalid && f.assetCategoryName.touched" class="text-danger">
+                <div *ngIf="f.assetCategoryName.errors?.required">
+                    <small>{{this.validations.assetCategoryName.err_msg_required}}</small>
+                </div>
+                <div *ngIf="f.assetCategoryName.errors?.minlength">
+                    <small>{{this.validations.assetCategoryName.err_msg_minLength}}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Submit button -->
+    <button type="submit" [disabled]="!addAssetType.valid" class="btn btn-primary btn-sm float-right">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Submit</button>
+
+</form>
+
+<!-- Form Ends -->

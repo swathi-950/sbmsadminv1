@@ -1,0 +1,74 @@
+<!-- Component Title -->
+<h3 class="text-capitalize text-center p-2">Asset Type List</h3>
+
+<table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Asset Type</th>
+            <th scope="col">Description</th>
+            <th scope="col">Asset Category Name</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngIf="assetTypeList.length==0">
+            <td class="text-center" colspan="4">
+                No Asset Types
+            </td>
+        </tr>
+        <tr *ngFor="let asset of assetTypeList">
+            <td>{{asset.assetType}}</td>
+            <td>{{asset.description}}</td>
+            <td>{{asset.assetCategoryName}}</td>
+            <td>
+                <div>
+                    <button type="button" class="btn btn-outline-warning mr-2 btn-sm" data-toggle="modal"
+                        data-target="#editAssetTypeModal" (click)="edit(asset)">
+                        Edit
+                    </button>
+                    <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal"
+                        data-target="#deleteAssetTypeModal" (click)="delete(asset)">Delete</button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<!-- Edit modal -->
+<div class="modal fade " id="editAssetTypeModal" tabindex="-1" role="dialog" aria-labelledby="editAssetTypelabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Asset Type</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&#10005;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-edit-asset-type></app-edit-asset-type>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Delete modal -->
+<div class="modal fa-deaf" id="deleteAssetTypeModal" tabindex="-1" role="dialog" aria-labelledby="deleteAssetTypelabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0" *ngIf="copyAssetType">
+                <h5 class="modal-title">Are you sure to delete <span
+                        class="text-danger">{{copyAssetType.assetType}}</span>
+                </h5>
+            </div>
+            <div class="d-flex justify-content-end modal-body">
+                <button type="button" class="btn btn-primary btn-sm mr-2" data-dismiss="modal" aria-label="Close">Cancel
+                </button>
+                <button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteAssetType()">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

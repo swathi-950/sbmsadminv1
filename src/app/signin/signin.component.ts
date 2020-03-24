@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { AuthenticationService } from '../Services/authentication.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ValidationsService } from '../Services/validations/validations.service';
+
 
 @Component({
   selector: 'app-signin',
@@ -8,14 +12,25 @@ import { ValidationsService } from '../Services/validations/validations.service'
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent implements OnInit {
-  signinForm: FormGroup;
-  validation;
-  loading = false;
 
-  constructor(private fb: FormBuilder,
+  signinForm: FormGroup
+
+  username: string = null;
+  password: string = null;
+  pwd: string = null;
+  errBoolean = false;
+  loading = false;
+  validations = false;
+  reloadonce: string = null;
+  validation;
+
+  constructor(private router: Router,
+    private authenticationService: AuthenticationService,
+    private toastr: ToastrService,
+    private fb: FormBuilder,
     private validation_ser: ValidationsService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.getValidations();
     this.SigninValidations();
   }
@@ -36,8 +51,30 @@ export class SigninComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.signinForm.controls['loginId'].value);
-    console.log(this.signinForm.controls['password'].value);
+    this.loading = !this.loading;
+    this.password = this.pwd;
+    this.authenticationService.authenticate(this.signinForm.controls['loginId'].value, this.signinForm.controls['password'].value)
+      .subscribe(
+        () => {
+          this.loading = !this.loading;
+          this.router.navigate(['/']).then(() => {
+            this.toastr.success('Login successful', 'Success');
+          });
+        },
+        error => {
+          this.loading = !this.loading;
+          this.pwd = null;
+          console.log(error);
+          if (error.status === 404) {
+            this.toastr.error('Incorrect username or password', 'Error');
+          } else if (error.status > 500) {
+            this.toastr.error("Internal server error please try again after sometime", 'Error');
+          } else if (error.status === 0) {
+            this.toastr.error("Server is not responding", 'Error');
+          } else if (error.status === 500) {
+            this.toastr.error(error.error.errorMessage, 'Error');
+          }
+        });
   }
 
 }

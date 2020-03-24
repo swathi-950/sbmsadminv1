@@ -1,0 +1,119 @@
+<!-- Component Title -->
+<h3 class="text-capitalize text-center p-2">Roles list</h3>
+
+<!-- Roles List Data -->
+<table class="table table-striped table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col" class="text-capitalize">#</th>
+      <th scope="col" class="text-capitalize">Role Name</th>
+      <th scope="col" class="text-capitalize">Description</th>
+      <th scope="col" class="text-capitalize">permissions List</th>
+      <th scope="col" class="text-capitalize"
+        *ngIf="enable_buttons.includes('P00006') || enable_buttons.includes('P00007')">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngIf="roleList.length === 0" aria-colspan="5" class="text-center">
+      <td colspan="5">No Roles</td>
+    </tr>
+    <tr *ngFor="let item of roleList; let i=index">
+      <th scope="row">{{i + 1}}</th>
+      <td>{{item.name}}</td>
+      <td>{{item.description}}</td>
+      <td>
+        <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#view_permissions"
+          (click)="viewPermissions(item.id)">
+          view
+        </button>
+      </td>
+      <td *ngIf="enable_buttons.includes('P00006') || enable_buttons.includes('P00007')">
+        <div class="row">
+          <button type="button" class="btn btn-outline-warning mr-2 btn-sm" data-toggle="modal" data-target="#editRoleModal"
+            (click)="copy_role_from_table(item);" *ngIf="enable_buttons.includes('P00006')">
+            Edit
+          </button>
+          <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#deleteRoleModal"
+            (click)="copy_role_from_table(item);" *ngIf="enable_buttons.includes('P00007')">
+            Delete
+          </button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Edit roles modal -->
+<div class="modal fade bd-example-modal-lg" id="editRoleModal" tabindex="-1" role="dialog"
+  aria-labelledby="editRoleLabel" aria-hidden="true" data-backdrop="static">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content" *ngIf="copy_role">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editRoleLabel">Edit Role</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&#10005;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-edit-roles></app-edit-roles>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Delete Modal -->
+<div class="modal fade" id="deleteRoleModal" tabindex="-1" role="dialog" aria-labelledby="deleteRoleLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" *ngIf="copy_role">
+        <h5 class="modal-title" id="deleteRoleLabel">Are you sure to delete <span
+            class="text-danger">{{copy_role.name}}</span></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&#10005;</span>
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteRole()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- view permissions -->
+<div class="modal fade" id="view_permissions" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-info" id="exampleModalCenterTitle">View Permissions</h5>
+        <button type="button" class="close text-info" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&#10005;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- {{view_permission_of_user | json}} -->
+        <table class="table table-striped table-hover">
+          <thead class="thead-dark">
+            <!-- <th class="text-capitalize">Permission Id</th> -->
+            <th class="text-capitalize">Name</th>
+            <th class="text-capitalize">Description</th>
+            <th class="text-capitalize">permission Access</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let view_per of view_permission_of_user">
+              <!-- <td>{{view_per.permissionId}}</td> -->
+              <td>{{view_per.name}}</td>
+              <td>{{view_per.description}}</td>
+              <td>{{view_per.permissionAccess}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+      </div> -->
+    </div>
+  </div>
+</div>

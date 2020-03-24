@@ -1,0 +1,64 @@
+<!-- Form starts -->
+<form class="col-12" [formGroup]="addAssetCategory" (ngSubmit)="editAssetCategory()">
+
+    <!-- 1st Row -->
+    <div class="form-group row">
+
+        <!-- Label -->
+        <div class="col-3">
+            <label for="asset category name" class="col-form-label">{{this.validations.categoryName.label}}</label>
+        </div>
+
+        <!-- Input Control -->
+        <div class="col-9">
+            <input type="text" class="form-control" id="asset category name" formControlName="categoryName"
+                placeholder="{{this.validations.categoryName.label}}" autocomplete="off"
+                maxlength="{{this.validations.categoryName.maxLength}}">
+
+            <!-- Error Messages -->
+            <div *ngIf="f.categoryName.invalid && f.categoryName.touched" class="text-danger">
+                <div *ngIf="f.categoryName.errors?.required">
+                    <small>{{this.validations.categoryName.err_msg_required}}</small>
+                </div>
+                <div *ngIf="f.categoryName.errors?.minlength">
+                    <small>{{this.validations.categoryName.err_msg_minLength}}</small>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 2nd Row -->
+    <div class="form-group row">
+
+        <!-- Label -->
+        <div class="col-3">
+            <label for="description" class="col-form-label">{{this.validations.description.label}}</label>
+        </div>
+
+        <!-- Textarea Control -->
+        <div class="col-9">
+            <textarea id="description" class="form-control" cols="30" rows="7" formControlName="description"
+                placeholder="{{this.validations.description.label}}" autocomplete="off"
+                maxlength="{{this.validations.description.maxLength}}">
+        </textarea>
+
+            <!-- Error Messages -->
+            <div *ngIf="f.description.invalid && f.description.touched" class="text-danger">
+                <div *ngIf="f.description.errors?.required">
+                    <small>{{this.validations.description.err_msg_required}}</small>
+                </div>
+                <div *ngIf="f.description.errors?.minlength">
+                    <small>{{this.validations.description.err_msg_minLength}}</small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Subit button -->
+    <button type="submit" class="btn btn-primary float-right btn-sm">Update</button>
+
+</form>
+
+<!-- Form Ends -->

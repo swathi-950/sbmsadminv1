@@ -1,0 +1,163 @@
+<div class="bg">
+  <div class="row m-0 d-flex align-items-center bgcolor">
+    <div class="col-lg-4 col-md-6 col-sm-6 ml-auto mr-auto">
+      <form class="form" [formGroup]="signupForm" (ngSubmit)="signup()">
+        <div class="card card-login">
+          <div class="card-header card-header-rose text-center">
+            <h4 class="card-title">Signup</h4>
+          </div>
+          <div class="card-body">
+
+            <!-- Name -->
+            <span class="bmd-form-group">
+              <div class="input-group my-3">
+                <div class="input-group-prepend"><span class="input-group-text"><i
+                      class="material-icons">account_circle</i></span>
+                </div>
+                <input class="form-control" placeholder="Name" type="name" autocomplete="off" formControlName="name"
+                  minlength="1" maxlength="16">
+              </div>
+              <div *ngIf="f.name.invalid && f.name.touched" class="text-danger">
+                <div *ngIf="f.name.errors?.required">
+                  <small>First name is required</small>
+                </div>
+                <div *ngIf="f.name.errors?.pattern">
+                  <small>Accept only alphabetical with space</small>
+                </div>
+              </div>
+            </span>
+            <!-- Designation -->
+            <span class="bmd-form-group">
+              <div class="input-group my-3">
+                <div class="input-group-prepend"><span class="input-group-text"><i
+                      class="material-icons">developer_board</i></span>
+                </div>
+                <input class="form-control" placeholder="Designation" type="designation" autocomplete="off"
+                  formControlName="designation" minlength="1" maxlength="16">
+              </div>
+              <div *ngIf="f.designation.invalid && f.designation.touched" class="text-danger">
+                <div *ngIf="f.designation.errors?.required">
+                  <small>Desgination is required</small>
+                </div>
+                <div *ngIf="f.designation.errors?.pattern">
+                  <small>Accept only alphabetical with space</small>
+                </div>
+              </div>
+            </span>
+
+            <!-- Phone number -->
+            <span class="bmd-form-group">
+              <div class="input-group my-3">
+                <div class="input-group-prepend"><span class="input-group-text"><i
+                      class="material-icons">call</i></span>
+                </div>
+                <input class="form-control" placeholder="PhoneNumber" type="tel" autocomplete="off"
+                  formControlName="phoneNumber" minlength="10" maxlength="10" appNumbersOnly>
+              </div>
+              <div *ngIf="f.phoneNumber.invalid && f.phoneNumber.touched" class="text-danger">
+                <div *ngIf="f.phoneNumber.errors?.required">
+                  <small>Phone Number is required</small>
+                </div>
+                <!-- <div *ngIf="f.phoneNumber.errors?.pattern">
+                  <small>mail must be valid email</small>
+                </div> -->
+              </div>
+            </span>
+
+            <!-- email -->
+            <span class="bmd-form-group">
+              <div class="input-group my-3">
+                <div class="input-group-prepend"><span class="input-group-text"><i
+                      class="material-icons">email</i></span>
+                </div>
+                <input class="form-control" placeholder="Email" type="email" autocomplete="off" formControlName="email"
+                  (keyup)="isEmailExisted()" maxlength="40">
+              </div>
+              <div *ngIf="f.email.invalid && f.email.touched" class="text-danger">
+                <div *ngIf="f.email.errors?.required">
+                  <small>Email is required</small>
+                </div>
+
+                <div *ngIf="f.email.errors?.pattern">
+                  <small>Mail must be valid email</small>
+                </div>
+              </div>
+              <div *ngIf="alreadyExistEmail" class="text-danger">
+                <small>{{emailexistError}}</small>
+              </div>
+            </span>
+
+            <!-- password -->
+            <span class="bmd-form-group">
+              <div class="input-group my-3">
+                <div class="input-group-prepend"><span class="input-group-text"><i
+                      class="material-icons">lock_outline</i></span>
+                </div>
+                <input class="form-control" placeholder="Password" type="password" formControlName="password"
+                  minlength="8" maxlength="16" autocomplete="off">
+              </div>
+              <div *ngIf="f.password.invalid && f.password.touched" class="text-danger">
+                <div *ngIf="f.password.errors?.required">
+                  <small>Password is required</small>
+                </div>
+                <div *ngIf="f.password.errors?.minlength">
+                  <small>Password must be atleast 8 characters long</small>
+                </div>
+              </div>
+            </span>
+
+            <!-- Confirm password -->
+
+            <span class="bmd-form-group">
+              <div class="input-group my-3">
+                <div class="input-group-prepend"><span class="input-group-text"><i
+                      class="material-icons">lock_outline</i></span>
+                </div>
+                <input class="form-control" placeholder="confirmPassword" type="password"
+                  formControlName="confirmPassword" minlength="8" maxlength="16" autocomplete="off">
+              </div>
+              <div *ngIf="f.confirmPassword.invalid && f.confirmPassword.touched" class="text-danger">
+                <div *ngIf="f.confirmPassword.errors?.required">
+                  <small>Confirm Password is required</small>
+                </div>
+                <div *ngIf="f.confirmPassword.errors?.mustMatch">
+                  <small>Password and Confirm Password does not match</small>
+                </div>
+              </div>
+            </span>
+
+            <!-- dob -->
+            <span class="bmd-form-group">
+              <div class="input-group my-3">
+                <div class="input-group-prepend"><span class="input-group-text"><i
+                      class="material-icons">date_range</i></span>
+                </div>
+                <input matInput [matDatepicker]="picker" class="form-control" placeholder="dob" name="dob"
+                  formControlName="dob">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </div>
+              <div *ngIf="f.dob.invalid && f.dob.touched" class="text-danger">
+                <div *ngIf="f.dob.errors?.required">
+                  <small>Date of birth is required</small>
+                </div>
+              </div>
+            </span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="card-footer">
+              <button class="btn btn-rose btn-link btn-lg" [routerLink]="['/signIn']"
+                routerLinkActive="router-link-active"> Sign In </button>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-rose btn-link btn-lg" [disabled]="signupForm.invalid || alreadyExistEmail || spin">
+                <span *ngIf="spin" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Sign Up
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

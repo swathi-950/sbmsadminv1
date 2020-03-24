@@ -1,0 +1,63 @@
+footer {
+  --f_bg: #232323;
+  --f-a-links-color: #828282;
+  --icon-color: #333;
+}
+
+.footer {
+  background-color: var(--f_bg);
+  color: #fff;
+  padding: 25px;
+}
+
+.footer-title {
+  height: 29px;
+  color: #FFF;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.f-boreder {
+  height: 4px;
+  width: 83px;
+  background-color: #048CD1;
+}
+
+.f-aboutUs-content {
+  color: #ECECEC;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 300;
+  display: contents;
+}
+
+.f-quick-links,
+.f-recent,
+.f-Locations {
+  color: var(--f-a-links-color);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 28px;
+}
+
+a {
+  color: var(--f-a-links-color);
+}
+
+#Copyright {
+  color: #C4C4C4;
+}
+
+.footer-icons{
+    padding: 10px;
+    background-color: var(--icon-color);
+    margin: 2px;
+    cursor: pointer;
+}
+
+.footer-icons i{
+    min-width: 25px;
+    justify-content: center;
+    text-align: center;
+    height: auto;
+}

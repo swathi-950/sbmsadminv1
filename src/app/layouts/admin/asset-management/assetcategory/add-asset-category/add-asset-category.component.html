@@ -1,0 +1,69 @@
+<!-- Component Title -->
+<h3 class="text-capitalize text-center p-2">Create Asset Category</h3>
+
+<!-- Form starts -->
+<form class="p-2" [formGroup]="addAssetCategory" (ngSubmit)="createAssetCategory()">
+
+    <!-- 1st Row -->
+    <div class="form-group row">
+
+        <!-- Label -->
+        <div class="col-2">
+            <label for="asset category name" class="col-form-label">{{this.validations.categoryName.label}}</label>
+        </div>
+
+        <!-- Input Control -->
+        <div class="col-10">
+            <input type="text" class="form-control" id="asset category name" formControlName="categoryName"
+                placeholder="{{this.validations.categoryName.label}}" autocomplete="off"
+                maxlength="{{this.validations.categoryName.maxLength}}">
+
+            <!-- Error Messages -->
+            <div *ngIf="f.categoryName.invalid && f.categoryName.touched" class="text-danger">
+                <div *ngIf="f.categoryName.errors?.required">
+                    <small>{{this.validations.categoryName.err_msg_required}}</small>
+                </div>
+                <div *ngIf="f.categoryName.errors?.minlength">
+                    <small>{{this.validations.categoryName.err_msg_minLength}}</small>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- 2nd Row -->
+    <div class="form-group row">
+
+        <!-- Label -->
+        <div class="col-2">
+            <label for="description" class="col-form-label">{{this.validations.description.label}}</label>
+        </div>
+
+        <!-- Textarea Control -->
+        <div class="col-10">
+            <textarea class="form-control" id="description" cols="30" rows="7" formControlName="description"
+                placeholder="{{this.validations.description.label}}" autocomplete="off"
+                maxlength="{{this.validations.description.maxLength}}">
+      </textarea>
+
+            <!-- Error Messages -->
+            <div *ngIf="f.description.invalid && f.description.touched" class="text-danger">
+                <div *ngIf="f.description.errors?.required">
+                    <small>{{this.validations.description.err_msg_required}}</small>
+                </div>
+                <div *ngIf="f.description.errors?.minlength">
+                    <small>{{this.validations.description.err_msg_minLength}}</small>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Submit button -->
+    <button type="submit" [disabled]="!addAssetCategory.valid"
+        class="btn btn-primary btn-sm float-right">Submit</button>
+
+</form>
+
+<!-- Form Ends -->

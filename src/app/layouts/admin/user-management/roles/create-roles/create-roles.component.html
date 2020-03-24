@@ -1,0 +1,133 @@
+<!-- Component Title -->
+<h3 class="text-capitalize text-center p-2">create role</h3>
+
+<!-- Form starts -->
+<form class="p-2" [formGroup]="createRole" (ngSubmit)="sendCreateRole()">
+
+  <!-- 1st Row -->
+  <div class="form-group row">
+
+    <!-- Label -->
+    <div class="col-2">
+      <label for="roleName" class="col-form-label">{{this.validations.name.label}}</label>
+    </div>
+
+    <!-- Input Control -->
+    <div class="col-10">
+      <input type="text" class="form-control" id="roleName" formControlName="name"
+        placeholder="{{this.validations.name.label}}" autocomplete="off" maxlength={{this.validations.name.maxLength}}>
+
+      <!-- Error Messages -->
+      <div *ngIf="f.name.invalid && f.name.touched" class="text-danger">
+        <div *ngIf="f.name.errors?.required">
+          <small>{{this.validations.name.err_msg_required}}</small>
+        </div>
+        <div *ngIf="f.name.errors?.minlength">
+          <small>{{this.validations.name.err_msg_minLength}}</small>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 2nd Row -->
+
+  <div class="form-group row">
+
+    <!-- Label -->
+    <div class="col-2">
+      <label for="description" class="col-form-label">{{this.validations.aliasName.label}}</label>
+    </div>
+
+    <!-- input Control -->
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="roleName" formControlName="aliasName"
+        placeholder="{{this.validations.aliasName.label}}" autocomplete="off">
+
+      <!-- Error Messages -->
+      <div *ngIf="f.aliasName.invalid && f.aliasName.touched" class="text-danger">
+        <div *ngIf="f.aliasName.errors?.required">
+          <small>{{this.validations.aliasName.err_msg_required}}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- 3rd Row -->
+  <div class="form-group row">
+
+    <!-- Label -->
+    <div class="col-2">
+      <label for="description" class="col-form-label">{{this.validations.description.label}}</label>
+    </div>
+
+    <!-- Textarea Control -->
+    <div class="col-sm-10">
+      <textarea name="description" cols="30" rows="5" class="form-control" id="description"
+        formControlName="description" placeholder="{{this.validations.description.label}}" autocomplete="off"
+        maxlength={{this.validations.description.maxLength}}>
+      </textarea>
+
+      <!-- Error Messages -->
+      <div *ngIf="f.description.invalid && f.description.touched" class="text-danger">
+        <div *ngIf="f.description.errors?.required">
+          <small>{{this.validations.description.err_msg_required}}</small>
+        </div>
+        <div *ngIf="f.description.errors?.minlength">
+          <small>{{this.validations.description.err_msg_minLength}}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- List of Permissions -->
+  <div class="form-group row">
+
+    <!-- Label -->
+    <div class="col-2">
+      <label for="permission" class="col-form-label">Permissions</label>
+    </div>
+
+    <!-- Input Checkbox Control -->
+    <div class="col-10 d-flex">
+
+      <div class="col-6">
+        <h5 class="text-info">Read Permissions</h5>
+
+        <!-- read -->
+        <div class="custom-control custom-checkbox" formArrayName="readPermissions"
+          *ngFor="let read_Per of createRole.controls.readPermissions?.value; let i=index">
+          <input type="checkbox" class="custom-control-input" id="{{read_Per.id}}" [checked]="read_Per.checked"
+            (change)="onCheckboxChangeRead($event,i)">
+          <label class="custom-control-label" for="{{read_Per.id}}">{{read_Per.name}}</label>
+        </div>
+
+      </div>
+
+      <div class="col-6">
+        <h5 class="text-success">Wirte Permissions</h5>
+        <!-- write -->
+        <div class="custom-control custom-checkbox" formArrayName="writePermissions"
+          *ngFor="let write_per of createRole.controls.writePermissions?.value; let i=index">
+          <input type="checkbox" class="custom-control-input" id="{{write_per.id}}" [checked]="write_per.checked"
+            (change)="onCheckboxChangeWrite($event,i)">
+          <label class="custom-control-label" for="{{write_per.id}}">{{write_per.name}}</label>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Submit Button -->
+  <div class="d-flex justify-content-end">
+    <button type="submit" class="btn btn-primary btn-sm" [disabled]="loading || createRole.invalid">
+      <span class="spinner-border spinner-border-sm" *ngIf="loading" role="status" aria-hidden="true"></span>
+      Submit
+    </button>
+  </div>
+
+</form>
+
+<!-- Form Ends -->

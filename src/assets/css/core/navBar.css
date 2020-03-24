@@ -1,0 +1,46 @@
+
+a,
+a:hover,
+a:focus {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.navbar {
+  background-image: linear-gradient(to top, #144A90 0%, #205182 100%);
+  border: none;
+  border-radius: 0;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  height: var(--navBar-height);
+  margin-bottom: var(--narBar-bottom-margin);
+  color: var(--navBar-color);
+}
+
+.navbar-btn {
+  box-shadow: none;
+  outline: none !important;
+  border: none;
+}
+
+.navbarTitle{
+  font-size: var(--navBar-title);
+  font-weight: 700;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px dashed #ddd;
+  margin: 40px 0;
+}
+
+.sidebarButton {
+  background-color: transparent;
+  border: none;
+}
+
+.sidebarButton:hover,
+.sidebarButton:focus {
+    outline: none;
+}

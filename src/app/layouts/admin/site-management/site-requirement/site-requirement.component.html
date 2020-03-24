@@ -1,0 +1,71 @@
+<!-- Component Title -->
+<h3 class="text-capitalize text-center p-2">Site Requirement</h3>
+
+<!-- Form Starts -->
+<form class="p-2" [formGroup]="siteReqForm" (ngSubmit)="onSubmit()">
+
+    <!-- 1st Row -->
+    <div class="form-group row">
+
+        <!-- Label -->
+        <div class="col-2">
+            <label for="power" class="col-form-label">{{this.validations.power.label}}</label>
+        </div>
+
+        <!-- Input control for power -->
+        <div class="col-10">
+            <input type="text" class="form-control" name="power" id="power" formControlName="power"
+                placeholder="{{this.validations.power.label}}" autocomplete="off" appNumbersOnly
+                maxlength={{this.validations.power.maxLength}}>
+
+            <!-- Error Messages -->
+            <div *ngIf="f.power.invalid && f.power.touched" class="text-danger">
+                <div *ngIf="f.power.errors?.required">
+                    <small>{{this.validations.power.err_msg_required}}</small>
+                </div>
+                <div *ngIf="f.power.errors?.minlength">
+                    <small>{{this.validations.power.err_msg_minLength}}</small>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- 2nd Row -->
+    <div class="form-group row">
+
+        <!-- Label -->
+        <div class="col-2">
+            <label for="voltage" class="col-form-label">{{this.validations.voltage.label}}</label>
+        </div>
+
+        <!-- input control for voltage -->
+        <div class="col-10">
+            <input type="text" class="form-control" name="voltage" id="voltage" formControlName="voltage"
+                placeholder="{{this.validations.voltage.label}}" autocomplete="off" appNumbersOnly
+                maxlength={{this.validations.voltage.maxLength}}>
+
+            <!-- Error Messages -->
+            <div *ngIf="f.voltage.invalid && f.voltage.touched" class="text-danger">
+                <div *ngIf="f.voltage.errors?.required">
+                    <small>{{this.validations.voltage.err_msg_required}}</small>
+                </div>
+                <div *ngIf="f.voltage.errors?.minlength">
+                    <small>{{this.validations.voltage.err_msg_minLength}}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Submit button -->
+    <div class="d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary btn-sm text-capitalize" [disabled]="siteReqForm.invalid">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Submit
+        </button>
+    </div>
+
+</form>
+
+<!-- Form Ends -->

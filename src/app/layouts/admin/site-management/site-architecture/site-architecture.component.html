@@ -1,0 +1,72 @@
+<!-- Component Title -->
+<h3 class="text-capitalize text-center p-2">Site Architecture</h3>
+
+<!-- Form Starts -->
+<form class="p-2" [formGroup]="siteArcForm" (ngSubmit)="onSubmit()">
+
+    <!-- 1st Row -->
+    <div class="form-group row">
+
+        <!-- Label -->
+        <div class="col-2">
+            <label for="noOfModules" class="col-form-label">{{this.validations.noOfModules.label}}</label>
+        </div>
+
+        <!-- Input control for noofmodules -->
+        <div class="col-10">
+            <input type="text" class="form-control" name="noOfModules" id="noOfModules" formControlName="noOfModules"
+                placeholder="{{this.validations.noOfModules.label}}" autocomplete="off" appNumbersOnly
+                maxlength={{this.validations.noOfModules.maxLength}}>
+
+            <!-- Error Messages -->
+            <div *ngIf="f.noOfModules.invalid && f.noOfModules.touched" class="text-danger">
+                <div *ngIf="f.noOfModules.errors?.required">
+                    <small>{{this.validations.noOfModules.err_msg_required}}</small>
+                </div>
+                <div *ngIf="f.noOfModules.errors?.minlength">
+                    <small>{{this.validations.noOfModules.err_msg_minLength}}</small>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- 2nd Row -->
+    <div class="form-group row">
+
+        <!-- Label -->
+        <div class="col-2">
+            <label for="noOfPacks" class="col-form-label">{{this.validations.noOfPacks.label}}</label>
+        </div>
+
+        <!-- input control for nop -->
+        <div class="col-10">
+            <input type="text" class="form-control" name="noOfPacks" id="noOfPacks" formControlName="noOfPacks"
+                placeholder="{{this.validations.noOfPacks.label}}" autocomplete="off" appNumbersOnly
+                maxlength={{this.validations.noOfPacks.maxLength}}>
+
+            <!-- Error Messages -->
+            <div *ngIf="f.noOfPacks.invalid && f.noOfPacks.touched" class="text-danger">
+                <div *ngIf="f.noOfPacks.errors?.required">
+                    <small>{{this.validations.noOfPacks.err_msg_required}}</small>
+                </div>
+                <div *ngIf="f.noOfPacks.errors?.minlength">
+                    <small>{{this.validations.noOfPacks.err_msg_minLength}}</small>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Submit button -->
+    <div class="d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary btn-sm text-capitalize" [disabled]="siteArcForm.invalid">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Submit
+        </button>
+    </div>
+
+</form>
+
+<!-- Form Ends -->

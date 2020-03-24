@@ -1,0 +1,279 @@
+<!-- Component Title -->
+<h3 class="text-capitalize text-center p-2">create Battery</h3>
+
+<!-- Form Starts -->
+<form class="p-2" [formGroup]="createBattery" (ngSubmit)="onSubmit()">
+    <!-- 1st row -->
+    <div class="form-row">
+        <!--storageTemperature  -->
+        <div class="form-group col-md-4">
+            <!-- label -->
+            <label for="value">{{validation.storageTemperature.label}}</label>
+
+            <!-- Input Control -->
+            <div class="form-group input-group mb-0" formGroupName="storageTemperature">
+                <input type="text" class="form-control" id="value" name="value" formControlName="value"
+                    autocomplete="off" placeholder="{{validation.storageTemperature.label}}" appNumbersOnly
+                    aria-describedby="degrees">
+                <div class="input-group-append">
+                    <span class="input-group-text" id="degres">Degrees</span>
+                </div>
+            </div>
+            <!-- Error Message -->
+            <div *ngIf="f.storageTemperature['controls'].value.invalid && f.storageTemperature['controls'].value.touched"
+                class="text-danger">
+                <div *ngIf="f.storageTemperature['controls'].value.errors.required">
+                    <small>{{validation.storageTemperature.err_msg_required}}</small>
+                </div>
+            </div>
+        </div>
+
+        <!--ratedBatteryCapacity  -->
+        <div class="form-group col-md-4" formGroupName="ratedBatteryCapacity">
+            <!-- label -->
+            <label for="value">{{validation.ratedBatteryCapacity.label}}</label>
+
+            <!-- Input Control -->
+            <div class="form-group input-group mb-0">
+                <input type="text" class="form-control" id="value" name="value" formControlName="value"
+                    autocomplete="off" placeholder="{{validation.ratedBatteryCapacity.label}}" appNumbersOnly
+                    aria-describedby="volts">
+                <div class="input-group-append">
+                    <span class="input-group-text" id="volts">AH</span>
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <div *ngIf="f.ratedBatteryCapacity['controls'].value.invalid && f.ratedBatteryCapacity['controls'].value.touched"
+                class="text-danger">
+                <div *ngIf="f.ratedBatteryCapacity['controls'].value.errors?.required">
+                    <small>{{validation.ratedBatteryCapacity.err_msg_required}}</small>
+                </div>
+            </div>
+        </div>
+
+        <!--ratedBatteryCapacity  -->
+        <div class="form-group col-md-4" formGroupName="specifiedCharge">
+            <!-- label -->
+            <label for="value">{{validation.specifiedCharge.label}}</label>
+
+            <!-- Input Control -->
+            <div class="form-group input-group mb-0">
+                <input type="text" class="form-control" id="value" name="value" formControlName="value"
+                    autocomplete="off" placeholder="{{validation.specifiedCharge.label}}" appNumbersOnly
+                    aria-describedby="percentage">
+                <div class="input-group-append">
+                    <span class="input-group-text" id="percentage">Percentage</span>
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <div *ngIf="f.specifiedCharge['controls'].value.invalid && f.specifiedCharge['controls'].value.touched"
+                class="text-danger">
+                <div *ngIf="f.specifiedCharge['controls'].value.errors?.required">
+                    <small>{{validation.specifiedCharge.err_msg_required}}</small>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 2nd row -->
+    <div class="form-row">
+
+        <!-- dimensions -->
+        <div class="form-group col-md-4">
+
+            <!-- label -->
+            <label for="dimensions">{{validation.dimensions.label}}</label>
+
+            <!-- Input Control -->
+            <input type="text" class="form-control" id="dimensions" name="dimensions" formControlName="dimensions"
+                placeholder="{{validation.dimensions.label}}" autocomplete="off"
+                maxlength="{{validation.dimensions.maxLength}}">
+
+            <!-- Error Message -->
+            <div *ngIf="f.dimensions.invalid && f.dimensions.touched" class="text-danger">
+                <div *ngIf="f.dimensions.errors?.required">
+                    <small>{{validation.dimensions.err_msg_required}}</small>
+                </div>
+                <div *ngIf="f.dimensions.errors?.minlength">
+                    <small>{{validation.dimensions.err_msg_minLength}}</small>
+                </div>
+            </div>
+        </div>
+
+        <!--dischargeRate  -->
+        <div class="form-group col-md-4">
+
+            <!-- label -->
+            <label for="dischargeRate">{{validation.dischargeRate.label}}</label>
+
+            <!-- Input Control -->
+            <input type="text" class="form-control" id="dischargeRate" name="dischargeRate"
+                placeholder="{{validation.dischargeRate.label}}" formControlName="dischargeRate" autocomplete="off"
+                appNumbersOnly maxlength="{{validation.dischargeRate.maxLength}}">
+
+
+            <!-- Error Message -->
+            <div *ngIf="f.dischargeRate.invalid && f.dischargeRate.touched" class="text-danger">
+                <div *ngIf="f.dischargeRate.errors?.required">
+                    <small>{{validation.dischargeRate.err_msg_required}}</small>
+                </div>
+                <div *ngIf="f.dischargeRate.errors?.minlength">
+                    <small>{{validation.dischargeRate.err_msg_minLength}}</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- nominal voltage -->
+        <div class="form-group col-md-4" formGroupName="nominalVoltage">
+            <!-- label -->
+            <label for="value">{{validation.nominalVoltage.label}}</label>
+
+            <!-- Input Control -->
+            <div class="form-group input-group mb-0">
+                <input type="text" class="form-control" id="value" name="value" formControlName="value"
+                    autocomplete="off" appNumbersOnly placeholder="{{validation.nominalVoltage.label}}"
+                    aria-describedby="volts">
+                <div class="input-group-append">
+                    <span class="input-group-text" id="volts">Volts</span>
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <div *ngIf="f.nominalVoltage['controls'].value.invalid && f.nominalVoltage['controls'].value.touched"
+                class="text-danger">
+                <div *ngIf="f.nominalVoltage['controls'].value.errors?.required">
+                    <small>{{validation.nominalVoltage.err_msg_required}}</small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 3rd row -->
+    <div class="form-row">
+        <!--chargingPolicy  -->
+        <div class="form-group col-md-4">
+
+            <!-- label -->
+            <label for="chargingPolicy">{{validation.chargingPolicy.label}}</label>
+
+            <!-- Input Control -->
+            <input type="text" class="form-control" id="chargingPolicy" name="chargingPolicy"
+                placeholder="{{validation.chargingPolicy.label}}" formControlName="chargingPolicy" autocomplete="off"
+                maxlength="{{validation.chargingPolicy.maxLength}}">
+
+            <!-- Error Message -->
+            <div *ngIf="f.chargingPolicy.invalid && f.chargingPolicy.touched" class="text-danger">
+                <div *ngIf="f.chargingPolicy.errors?.required">
+                    <small>{{validation.chargingPolicy.err_msg_required}}</small>
+                </div>
+                <div *ngIf="f.chargingPolicy.errors?.minlength">
+                    <small>{{validation.chargingPolicy.err_msg_minLength}}</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- operating tempratue -->
+        <div class="form-group col-md-4" formGroupName="operatingTemperature">
+            <!-- label -->
+            <label for="value">{{validation.operatingTemperature.label}}</label>
+
+            <!-- Input Control -->
+            <div class="form-group input-group mb-0">
+                <input type="text" class="form-control" id="value" name="value" formControlName="value"
+                    autocomplete="off" appNumbersOnly placeholder="{{validation.operatingTemperature.label}}"
+                    aria-describedby="degrees">
+                <div class="input-group-append">
+                    <span class="input-group-text" id="degrees">Degrees</span>
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <div *ngIf="f.operatingTemperature['controls'].value.invalid && f.operatingTemperature['controls'].value.touched"
+                class="text-danger">
+                <div *ngIf="f.operatingTemperature['controls'].value.errors?.required">
+                    <small>{{validation.operatingTemperature.err_msg_required}}</small>
+                </div>
+            </div>
+        </div>
+
+        <!--manufacturingDate  -->
+        <div class="form-group col-md-4">
+
+            <!-- label -->
+            <label for="manufacturingDate">{{validation.manufacturingDate.label}}</label>
+
+            <!-- Input Control -->
+            <input type="date" class="form-control" id="manufacturingDate" name="manufacturingDate"
+                placeholder="{{validation.manufacturingDate.label}}" formControlName="manufacturingDate"
+                autocomplete="off">
+
+            <!-- Error Message -->
+            <div *ngIf="f.manufacturingDate.invalid && f.manufacturingDate.touched" class="text-danger">
+                <div *ngIf="f.manufacturingDate.errors?.required">
+                    <small>{{validation.manufacturingDate.err_msg_required}}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 4th row -->
+    <div class="form-row">
+        <!-- warrantyPeriod -->
+        <div class="form-group col-md-4">
+
+            <!-- label -->
+            <label for="warrantyPeriod">{{validation.warrantyPeriod.label}}</label>
+
+            <!-- Input Control -->
+            <input type="text" class="form-control" id="warrantyPeriod" name="warrantyPeriod"
+                formControlName="warrantyPeriod" placeholder="{{validation.warrantyPeriod.label}}" autocomplete="off"
+                maxlength="{{validation.warrantyPeriod.maxLength}}">
+
+            <!-- Error Message -->
+            <div *ngIf="f.warrantyPeriod.invalid && f.warrantyPeriod.touched" class="text-danger">
+                <div *ngIf="f.warrantyPeriod.errors?.required">
+                    <small>{{validation.warrantyPeriod.err_msg_required}}</small>
+                </div>
+                <div *ngIf="f.warrantyPeriod.errors?.minlength">
+                    <small>{{validation.warrantyPeriod.err_msg_minLength}}</small>
+                </div>
+            </div>
+
+        </div>
+
+        <!--assetCategory  -->
+        <div class="form-group col-md-4">
+
+            <!-- label -->
+            <label for="assetCategory">{{validation.assetCategory.label}}</label>
+
+            <!-- dropdown -->
+            <select id="assetCategory" name="assetCategory" class="form-control text-center"
+                formControlName="assetCategory">
+                <option value="">Select Category Name</option>
+                <option *ngFor="let asset of assetCatagoryList" [value]="asset.categoryName" class="form-control-sm">
+                    {{asset.categoryName}}
+                </option>
+            </select>
+
+            <!-- Error Message -->
+            <div *ngIf="f.assetCategory.invalid && f.assetCategory.touched" class="text-danger">
+                <div *ngIf="f.assetCategory.errors?.required">
+                    <small>{{validation.assetCategory.err_msg_required}}</small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Submit Button -->
+    <div class="d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary" >
+            <span class="spinner-border spinner-border-sm" *ngIf="spin" role="status" aria-hidden="true"></span>
+            Submit
+        </button>
+    </div>
+
+</form>

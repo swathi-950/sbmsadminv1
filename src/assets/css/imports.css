@@ -1,0 +1,8 @@
+@import "core/variables/variables.css";
+
+
+/* Core Components */
+@import "core/main.css";
+@import "core/navBar.css";
+@import "core/sideBar.css";
+@import "core/forms.scss";

@@ -1,0 +1,141 @@
+<div class="justify-content-center">
+
+  <form class="col-12" [formGroup]="userForm" (ngSubmit)="editUser()">
+
+    <!-- 1st row -->
+    <div class="row">
+
+      <!-- first name -->
+      <div class="col-6">
+        <div class="form-group">
+          <label for="firstName"> First Name</label>
+          <input type="text" class="form-control" id="firstName" formControlName="firstName" autocomplete="off"
+            maxlength="{{maxLen.firstName}}">
+        </div>
+      </div>
+
+      <!-- Last name -->
+      <div class="col-6">
+        <div class="form-group">
+          <label for="lastName">Last Name </label>
+          <input type="text" class="form-control" id="lastName" formControlName="lastName" autocomplete="off"
+            maxlength="{{maxLen.lastName}}">
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 2nd row -->
+    <div class="row">
+
+      <!-- Phone number -->
+      <div class="col-6">
+        <div class="form-group">
+          <label for="phoneNumber">Phone Number </label>
+          <input type="text" class="form-control" id="phone Number" formControlName="phoneNumber"
+            maxlength="{{maxLen.phoneNumber}}" autocomplete="off">
+        </div>
+      </div>
+
+      <!-- Country -->
+      <div class="col-6">
+        <div class="form-group">
+          <label for="country">Country </label>
+          <select id="country" name="country" class="form-control text-center" placeholder="Select Country"
+            formControlName="country" (change)="Filter($event.target.value)">
+            <option style="font-size: 16px !important;" value="">Select country</option>
+            <option *ngFor="let country of countries" [value]="country.name" class="form-control-sm">
+              {{country.name}}
+            </option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 3rd row -->
+    <div class="row">
+
+      <!-- State -->
+      <div class="col-6">
+        <div class="form-group">
+          <label for="state">State </label>
+          <select id="state" name="state" class="form-control input-custom-control" formControlName="state"
+            (change)="selectedState($event.target.value)">
+            <option *ngFor="let state of states" [value]="state.name" class="form-control input-custom-control-sm">
+              {{state.name}}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <!-- City -->
+      <div class="col-6">
+        <div class="form-group">
+          <label for="city">City </label>
+          <select id="city" name="city" class="form-control text-center" formControlName="city">
+            <option *ngFor="let city of cities" [value]="city.name" class="form-control input-custom-control-sm">
+              {{city.name}}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4th row Role -->
+    <div class="row">
+
+      <div class="col-12 form-group">
+        <label for="role"> Role</label>
+        <select id="role" name="role" class="form-control text-center" formControlName="role"
+          (change)="selectedRolename($event.target.value)">
+          <option value="">Select Role</option>
+          <option *ngFor="let role of roles" [value]="role.name" class="form-control-sm">
+            {{role.name}}
+          </option>
+        </select>
+      </div>
+
+    </div>
+
+    <!-- 5th row Permission -->
+    <div class="form-group row">
+
+      <!-- Label -->
+      <div class="col-2">
+        <label for="permission" class="col-form-label">Permissions</label>
+      </div>
+
+      <!-- Input Checkbox Control -->
+      <div class="col-10 d-flex">
+
+        <div class="col-6">
+          <h5 class="text-info">Read Permissions</h5>
+
+          <!-- read -->
+          <div class="custom-control custom-checkbox" formArrayName="readPermissions"
+            *ngFor="let read_Per of userForm.controls.readPermissions?.value; let i=index">
+            <input type="checkbox" class="custom-control-input" id="{{read_Per.id}}" [checked]="read_Per.checked"
+              (change)="onCheckboxChangeRead($event,i)">
+            <label class="custom-control-label" for="{{read_Per.id}}">{{read_Per.name}}</label>
+          </div>
+
+        </div>
+
+        <div class="col-6">
+          <h5 class="text-success">Wirte Permissions</h5>
+          <!-- write -->
+          <div class="custom-control custom-checkbox" formArrayName="writePermissions"
+            *ngFor="let write_per of userForm.controls.writePermissions?.value; let i=index">
+            <input type="checkbox" class="custom-control-input" id="{{write_per.id}}" [checked]="write_per.checked"
+              (change)="onCheckboxChangeWrite($event,i)">
+            <label class="custom-control-label" for="{{write_per.id}}">{{write_per.name}}</label>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-sm float-right">Update</button>
+  </form>
+</div>

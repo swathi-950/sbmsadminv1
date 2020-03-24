@@ -1,0 +1,377 @@
+<!-- Component Title -->
+<h4 class="text-capitalize p-2">create User</h4>
+<hr class="mx-2">
+
+<!-- Form Starts -->
+<form class="p-2" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+  <!-- 1st row -->
+  <div class="form-row">
+
+    <!-- First Name -->
+    <div class="form-group col-md-4">
+
+      <!-- label -->
+      <span class="has-float-label" for="firstName">
+        <!-- Input Control -->
+        <input type="text" class="form-control" id="firstName" name="firstName" formControlName="firstName"
+          placeholder="{{validation.firstName.label}}" autocomplete="off"
+          maxlength="{{validation.firstName.maxLength}}">
+        <label>{{validation.firstName.label}}</label>
+      </span>
+
+
+      <!-- Error Message -->
+      <div *ngIf="f.firstName.invalid && f.firstName.touched" class="text-danger">
+        <div *ngIf="f.firstName.errors?.required">
+          <small>{{validation.firstName.err_msg_required}}</small>
+        </div>
+        <div *ngIf="f.firstName.errors?.minlength">
+          <small>{{validation.firstName.err_msg_minLength}}</small>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Last Name -->
+    <div class="form-group col-md-4">
+
+      <!-- label -->
+      <span class="has-float-label">
+        <!-- Input Control -->
+        <input type="text" class="form-control" id="lastName" name="lastName"
+          placeholder="{{validation.lastName.label}}" formControlName="lastName" autocomplete="off"
+          maxlength="{{validation.lastName.maxlength}}">
+        <label>{{validation.lastName.label}}</label>
+      </span>
+
+      <!-- Error Message -->
+      <div *ngIf="f.lastName.invalid && f.lastName.touched" class="text-danger">
+        <div *ngIf="f.lastName.errors?.required">
+          <small>{{validation.lastName.err_msg_required}}</small>
+        </div>
+        <div *ngIf="f.firstName.errors?.minlength">
+          <small>{{validation.lastName.err_msg_minLength}}</small>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- User Name -->
+    <div class="form-group col-md-4">
+
+      <span class="has-float-label">
+        <!-- Input Control -->
+        <input type="text" class="form-control" id="userName" name="userName"
+          placeholder="{{validation.userName.label}}" formControlName="userName" autocomplete="off"
+          maxlength="{{validation.userName.maxlength}}">
+        <!-- label -->
+        <label for="userName">{{validation.userName.label}}</label>
+      </span>
+
+      <!-- Error Message -->
+      <div *ngIf="f.userName.invalid && f.userName.touched" class="text-danger">
+        <div *ngIf="f.userName.errors?.required">
+          <small>{{validation.userName.err_msg_required}}</small>
+        </div>
+        <div *ngIf="f.userName.errors?.minlength">
+          <small>{{validation.userName.err_msg_minLength}}</small>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 2nd Row -->
+  <div class="form-row">
+
+
+
+    <!-- Email Id -->
+    <div class="form-group col-md-4">
+
+      <span class="has-float-label">
+        <!-- Input Control -->
+        <input type="email" class="form-control" id="emailId" name="emailId" placeholder="{{validation.emailId.label}}"
+          formControlName="emailId" autocomplete="off">
+        <!-- label -->
+        <label for="emailId">{{validation.emailId.label}}</label>
+      </span>
+
+
+      <!-- Error Message -->
+      <div *ngIf="f.emailId.invalid && f.emailId.touched" class="text-danger">
+        <div *ngIf="f.emailId.errors?.required">
+          <small>{{validation.emailId.err_msg_required}}</small>
+        </div>
+        <div *ngIf="f.emailId.errors?.pattern">
+          <small>{{validation.emailId.err_msg_pattern}}</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Password -->
+    <div class="form-group col-md-4">
+
+      <span class="has-float-label">
+        <!-- Input Control -->
+        <input type="password" class="form-control" id="password" name="password" formControlName="password"
+          placeholder="{{validation.password.label}}" autocomplete="off" maxlength="{{validation.password.maxLength}}">
+        <!-- label -->
+        <label for="password">{{validation.password.label}}</label>
+      </span>
+
+
+      <!-- Error Message -->
+      <div *ngIf="f.password.invalid && f.password.touched" class="text-danger">
+        <div *ngIf="f.password.errors?.required">
+          <small>{{validation.password.err_msg_required}}</small>
+        </div>
+        <div *ngIf="f.password.errors?.minlength">
+          <small>{{validation.password.err_msg_minLength}}</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Confirm Password -->
+
+    <div class="form-group col-md-4">
+
+      <span class="has-float-label">
+        <!-- Input Control -->
+        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
+          formControlName="confirmPassword" placeholder="{{validation.confirmPassword.label}}" autocomplete="off"
+          maxlength="{{validation.confirmPassword.maxLength}}">
+        <!-- label -->
+        <label for="confirmPassword">{{validation.confirmPassword.label}}</label>
+      </span>
+
+      <!-- Error Message -->
+      <div *ngIf="f.confirmPassword.invalid && f.confirmPassword.touched" class="text-danger">
+        <div *ngIf="f.confirmPassword.errors?.required">
+          <small>{{validation.confirmPassword.err_msg_required}}</small>
+        </div>
+        <div *ngIf="f.confirmPassword.errors?.minlength">
+          <small>{{validation.confirmPassword.err_msg_minLength}}</small>
+        </div>
+        <div *ngIf="f.confirmPassword.errors?.mustMatch" class="text-danger">
+          <small>{{validation.confirmPassword.err_msg_mustMatch}}</small>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 3rd row -->
+  <div class="form-row">
+
+    <!-- Phone Number -->
+    <div class="form-group col-md-4">
+      <span class="has-float-label">
+        <!-- Input Control -->
+        <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" formControlName="phoneNumber"
+          placeholder="{{validation.phoneNumber.label}}" autocomplete="off" appNumbersOnly
+          maxlength="{{validation.phoneNumber.maxLength}}">
+        <!-- label -->
+        <label for="phoneNumber">{{validation.phoneNumber.label}}</label>
+      </span>
+
+      <!-- Error Message -->
+      <div *ngIf="f.phoneNumber.invalid && f.phoneNumber.touched" class="text-danger">
+        <div *ngIf="f.phoneNumber.errors?.required">
+          <small>{{validation.phoneNumber.err_msg_required}}</small>
+        </div>
+        <div *ngIf="f.phoneNumber.errors?.minlength">
+          <small>{{validation.phoneNumber.err_msg_minLength}}</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Country Selection -->
+    <div class="form-group col-md-4 select">
+      <span class="form-group has-float-label mb-0">
+        <!-- Dropdown -->
+        <select id="country" name="country" class="form-control text-center" formControlName="country"
+          (change)="Filter($event.target.value)">
+          <option value="">Select Country</option>
+          <option *ngFor="let country of countries" [value]="country.name" class="form-control-sm">
+            {{country.name}}
+          </option>
+        </select>
+        <label>{{validation.country.label}}</label>
+      </span>
+
+      <!-- Error Message -->
+      <div *ngIf="f.country.invalid && f.country.touched" class="text-danger">
+        <div *ngIf="f.country.errors?.required">
+          <small>{{validation.country.err_msg_required}}</small>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- State Selection -->
+    <div class="form-group col-md-4">
+
+      <span class="has-float-label mb-0">
+        <!-- Dropdown -->
+        <select id="state" name="state" class="form-control text-center" formControlName="state"
+          (change)="selectedState($event.target.value)">
+          <option value="">Select State</option>
+          <option *ngFor="let state of states" [value]="state.name" class="form-control-sm">
+            {{state.name}}
+          </option>
+        </select>
+
+        <!-- label -->
+        <label for="state">{{validation.state.label}}</label>
+      </span>
+
+      <!-- Error Message -->
+      <div *ngIf="f.state.invalid && f.state.touched" class="text-danger">
+        <div *ngIf="f.state.errors?.required">
+          <small>{{validation.state.err_msg_required}}</small>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- 4th row -->
+  <div class="form-row">
+
+    <!-- City Selection -->
+    <div class="form-group col-md-4">
+      <span class="has-float-label">
+
+        <!-- Dropdown -->
+        <select id="city" name="city" class="form-control text-center" formControlName="city">
+          <option value="">Select City</option>
+          <option *ngFor="let city of cities" [value]="city.name" class="form-control-sm">
+            {{city.name}}
+          </option>
+        </select>
+
+        <!-- label -->
+        <label for="city">{{validation.city.label}}</label>
+      </span>
+
+      <!-- Error Message -->
+      <div *ngIf="f.city.invalid && f.city.touched" class="text-danger">
+        <div *ngIf="f.city.errors?.required">
+          <small>{{validation.city.err_msg_required}}</small>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Role Selection -->
+    <div class="form-group col-md-4">
+
+      <span class="has-float-label">
+        <!-- dropdown -->
+        <select id="role" name="role" class="form-control text-center" formControlName="role"
+          (change)="selectRolename($event.target.value);">
+          <option value="">Select Role</option>
+          <option *ngFor="let role of roles" [value]="role.name" class="form-control-sm">
+            {{role.name}}
+          </option>
+        </select>
+
+        <!-- label -->
+        <label for="role">{{validation.role.label}}</label>
+      </span>
+
+      <!-- Error Message -->
+      <div *ngIf="f.role.invalid && f.role.touched" class="text-danger">
+        <div *ngIf="f.role.errors?.required">
+          <small>{{validation.role.err_msg_required}}</small>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- assetAccess Selection -->
+    <!-- <div class="form-group col-md-4"> -->
+
+    <!-- label -->
+    <!--  <label for="assetAccess">{{validation.assetAccess.label}}</label> -->
+
+    <!-- Input Checkbox Control -->
+    <!--     <div class="d-flex">
+        <div class="custom-control custom-checkbox mr-2" formArrayName="form_assetsList"
+          *ngFor="let asset of userForm.controls.form_assetsList?.value;let i = index;">
+          <input class="custom-control-input" type="checkbox" id="{{asset.assetCategoryId}}" [checked]="asset.checked"
+            (change)="onCheckboxCategoryChange($event,i)">
+          <label class="custom-control-label" for="{{asset.assetCategoryId}}">{{asset.categoryName}}</label>
+        </div>
+      </div>
+
+    </div> -->
+
+  </div>
+  <!-- 5th row -->
+  <p class="main">Asset Type</p>
+  <hr>
+  <div class="form-group row">
+    <!-- Input Checkbox Control -->
+    <div class="d-flex">
+      <div class="custom-control custom-checkbox mr-2" formArrayName="form_assetsList"
+        *ngFor="let asset of userForm.controls.form_assetsList?.value;let i = index;">
+        <input class="custom-control-input" type="checkbox" id="{{asset.assetCategoryId}}" [checked]="asset.checked"
+          (change)="onCheckboxCategoryChange($event,i)">
+        <label class="custom-control-label" for="{{asset.assetCategoryId}}">{{asset.categoryName}}</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5th row -->
+  <div class="form-group row">
+
+    <!-- Label -->
+    <div class="col-2">
+      <label for="permission" class="col-form-label">Permissions</label>
+    </div>
+
+    <!-- Input Checkbox Control -->
+    <div class="col-10 d-flex">
+
+      <div class="col-6">
+        <h5 class="text-info">Read Permissions</h5>
+
+        <!-- read -->
+        <div class="custom-control custom-checkbox" formArrayName="readPermissions"
+          *ngFor="let read_Per of userForm.controls.readPermissions?.value; let i=index">
+          <input type="checkbox" class="custom-control-input" id="{{read_Per.id}}" [checked]="read_Per.checked"
+            (change)="onCheckboxChangeRead($event,i)">
+          <label class="custom-control-label" for="{{read_Per.id}}">{{read_Per.name}}</label>
+        </div>
+
+      </div>
+
+      <div class="col-6">
+        <h5 class="text-success">Wirte Permissions</h5>
+        <!-- write -->
+        <div class="custom-control custom-checkbox" formArrayName="writePermissions"
+          *ngFor="let write_per of userForm.controls.writePermissions?.value; let i=index">
+          <input type="checkbox" class="custom-control-input" id="{{write_per.id}}" [checked]="write_per.checked"
+            (change)="onCheckboxChangeWrite($event,i)">
+          <label class="custom-control-label" for="{{write_per.id}}">{{write_per.name}}</label>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Submit Button -->
+  <div class="d-flex justify-content-end">
+    <button type="submit" class="btn btn-primary" [disabled]="spin">
+      <span class="spinner-border spinner-border-sm" *ngIf="spin" role="status" aria-hidden="true"></span>
+      Submit
+    </button>
+  </div>
+
+</form>
+
+<!-- Form Ends -->

@@ -1,0 +1,62 @@
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"] {
+  border-radius: 3px;
+  background-color: #FCFCFC;
+  border: 1px solid #CCC;
+  height: 55px;
+}
+
+.form-control {
+  border-radius: 3px;
+  background-color: #FCFCFC;
+  border: 1px solid #CCC;
+  height: 55px !important;
+}
+
+textarea {
+  resize: none !important;
+}
+
+.form-control:focus {
+  /* box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, .25) !important; */
+  box-shadow: none !important;
+}
+
+select {
+  background-image: url(./../../Images/arrow.png);
+  background-position: 97% center;
+  background-size: 16px;
+  background-repeat: no-repeat;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.mandetory {
+  color: red;
+}
+
+.form-control.ng-untouched {
+  border: 1px solid #ced4da !important;
+  border-radius: 5px;
+}
+
+.form-control.ng-invalid {
+  border: 1px solid #ff000052;
+  border-radius: 5px;
+}
+
+button:focus {
+  outline: 0px auto -webkit-focus-ring-color !important;
+}
+
+/* Table thead background color */
+.table .thead-dark th {
+  background-color: #374559 !important;
+}
+
+.has-float-label .form-control:placeholder-shown:not(:focus)+* {
+  font-size: 120% !important;
+  top: 0.9em !important;
+}

@@ -1,0 +1,206 @@
+<!-- Component Title -->
+<h3 class="text-capitalize text-center p-2">create Module</h3>
+
+<!-- Form starts -->
+<form class="p-2" [formGroup]="createModule" (ngSubmit)="onSubmit()">
+
+    <!-- 1st row -->
+    <div class="form-row">
+
+        <!-- moduleName -->
+        <div class="form-group col-md-6">
+
+            <!-- label -->
+            <label for="moduleName">{{validation.moduleName.label}}</label>
+
+            <!-- Input Control -->
+            <input type="text" class="form-control" id="moduleName" name="moduleName" formControlName="moduleName"
+                placeholder="{{validation.moduleName.label}}" autocomplete="off"
+                maxlength="{{validation.moduleName.maxLength}}">
+
+            <!-- Error Message -->
+            <div *ngIf="f.moduleName.invalid && f.moduleName.touched" class="text-danger">
+                <div *ngIf="f.moduleName.errors?.required">
+                    <small>{{validation.moduleName.err_msg_required}}</small>
+                </div>
+                <div *ngIf="f.moduleName.errors?.minlength">
+                    <small>{{validation.moduleName.err_msg_minLength}}</small>
+                </div>
+            </div>
+        </div>
+
+        <!--voltage  -->
+        <div class="form-group col-md-6" formGroupName="voltage">
+            <!-- label -->
+            <label for="value">{{validation.voltage.label}}</label>
+
+            <!-- Input Control -->
+            <div class="form-group input-group">
+                <input type="text" class="form-control" id="value" name="value" formControlName="value"
+                    autocomplete="off" placeholder="{{validation.voltage.label}}" aria-describedby="volts"
+                    appNumbersOnly>
+                <div class="input-group-append">
+                    <span class="input-group-text" id="volts">Volts</span>
+                </div>
+            </div>
+            <!-- Error Message -->
+            <div *ngIf="f.voltage['controls'].value.invalid && f.voltage['controls'].value.touched" class="text-danger">
+                <div *ngIf="f.voltage['controls'].value.errors.required">
+                    <small>{{validation.voltage.err_msg_required}}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2nd row -->
+
+    <div class="form-row">
+
+        <!-- Capicity -->
+        <div class="form-group col-md-6" formGroupName="capacity">
+            <!-- label -->
+            <label for="value">{{validation.capacity.label}}</label>
+
+            <!-- Input Control -->
+            <div class="form-group input-group">
+                <input type="text" class="form-control" id="value" name="value" formControlName="value"
+                    autocomplete="off" placeholder="{{validation.capacity.label}}" aria-describedby="AH" appNumbersOnly>
+                <div class="input-group-append">
+                    <span class="input-group-text" id="AH">AH</span>
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <div *ngIf="f.capacity['controls'].value.invalid && f.capacity['controls'].value.touched"
+                class="text-danger">
+                <div *ngIf="f.capacity['controls'].value.errors.required">
+                    <small>{{validation.capacity.err_msg_required}}</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- life -->
+        <div class="form-group col-md-6">
+
+            <!-- label -->
+            <label for="life">{{validation.life.label}}</label>
+
+            <!-- Input Control -->
+            <input type="text" class="form-control" id="life" name="life" formControlName="life"
+                placeholder="{{validation.life.label}}" autocomplete="off" maxlength="{{validation.life.maxLength}}">
+
+            <!-- Error Message -->
+            <div *ngIf="f.life.invalid && f.life.touched" class="text-danger">
+                <div *ngIf="f.life.errors?.required">
+                    <small>{{validation.life.err_msg_required}}</small>
+                </div>
+                <div *ngIf="f.life.errors?.minlength">
+                    <small>{{validation.life.err_msg_minLength}}</small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 3rd row -->
+
+    <div class="form-row">
+
+        <!--dateOfManufacture  -->
+        <div class="form-group col-md-6">
+
+            <!-- label -->
+            <label for="dateOfManufacture">{{validation.dateOfManufacture.label}}</label>
+
+            <!-- Input Control -->
+            <input type="date" class="form-control" id="dateOfManufacture" name="dateOfManufacture"
+                placeholder="{{validation.dateOfManufacture.label}}" formControlName="dateOfManufacture"
+                autocomplete="off">
+
+            <!-- Error Message -->
+            <div *ngIf="f.dateOfManufacture.invalid && f.dateOfManufacture.touched" class="text-danger">
+                <div *ngIf="f.dateOfManufacture.errors?.required">
+                    <small>{{validation.dateOfManufacture.err_msg_required}}</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- weight -->
+
+        <div class="form-group col-md-6">
+
+            <!-- label -->
+            <label for="weight">{{validation.weight.label}}</label>
+
+            <!-- Input Control -->
+            <input type="text" class="form-control" id="weight" name="weight" formControlName="weight"
+                placeholder="{{validation.weight.label}}" autocomplete="off"
+                maxlength="{{validation.weight.maxLength}}">
+
+            <!-- Error Message -->
+            <div *ngIf="f.weight.invalid && f.weight.touched" class="text-danger">
+                <div *ngIf="f.weight.errors?.required">
+                    <small>{{validation.weight.err_msg_required}}</small>
+                </div>
+                <div *ngIf="f.weight.errors?.minlength">
+                    <small>{{validation.weight.err_msg_minLength}}</small>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- 4th row -->
+    <div class="form-row">
+
+        <!--warranty  -->
+        <div class="form-group col-md-6">
+
+            <!-- label -->
+            <label for="warranty">{{validation.warranty.label}}</label>
+
+            <!-- Input Control -->
+            <input type="text" class="form-control" id="warranty" name="warranty"
+                placeholder="{{validation.warranty.label}}" formControlName="warranty" autocomplete="off"
+                maxlength="{{validation.warranty.maxLength}}">
+
+            <!-- Error Message -->
+            <div *ngIf="f.warranty.invalid && f.warranty.touched" class="text-danger">
+                <div *ngIf="f.warranty.errors?.required">
+                    <small>{{validation.warranty.err_msg_required}}</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- packName -->
+        <div class="form-group col-md-6">
+            <!-- label -->
+            <label for="packName">{{validation.packName.label}}</label>
+
+            <!-- dropdown -->
+            <select id="packName" name="packName" class="form-control text-center" formControlName="packName">
+                <option value="">Select Pack Name</option>
+                <option *ngFor="let pack of packs" [value]="pack.packName" class="form-control-sm">
+                    {{pack.packName}}
+                </option>
+            </select>
+
+            <!-- Error Messages -->
+            <div *ngIf="f.packName.invalid && f.packName.touched" class="text-danger">
+                <div *ngIf="f.packName.errors?.required">
+                    <small>{{this.validation.packName.err_msg_required}}</small>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Submit Button -->
+    <div class="d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary" [disabled]="createModule.invalid">
+            <span class="spinner-border spinner-border-sm" *ngIf="spin" role="status" aria-hidden="true"></span>
+            Submit
+        </button>
+    </div>
+
+</form>

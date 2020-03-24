@@ -1,0 +1,98 @@
+<!-- Component Title -->
+<h3 class="text-capitalize text-center p-2">Batteries list</h3>
+<!-- BAtteries list data -->
+<table class="table table-striped table-hover table-responsive">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col" class="text-capitalize">SerialNumber</th>
+            <th scope="col" class="text-capitalize">StorageTemperature</th>
+            <th scope="col" class="text-capitalize">RatedBatteryCapacity</th>
+            <th scope="col" class="text-capitalize">specifiedCharge</th>
+            <th scope="col" class="text-capitalize">dimensions</th>
+            <th scope="col" class="text-capitalize">dischargeRate</th>
+            <th scope="col" class="text-capitalize">nominalVoltage</th>
+            <th scope="col" class="text-capitalize">chargingPolicy</th>
+            <th scope="col" class="text-capitalize">operatingTemperature</th>
+            <th scope="col" class="text-capitalize">manufacturingDate</th>
+            <th scope="col" class="text-capitalize">warrantyPeriod</th>
+            <th scope="col" class="text-capitalize">assetCategory</th>
+            <th scope="col" class="text-capitalize"
+                *ngIf="enable_buttons.includes('P000028') || enable_buttons.includes('P000029')">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngIf="batteryList.length === 0" aria-colspan="13" class="text-center">
+            <td colspan="13">No Batteries</td>
+        </tr>
+        <tr *ngFor="let battery of batteryList">
+            <td>{{battery.serialNumber}}</td>
+            <td>{{battery.storageTemperature.value}} °C</td>
+            <td>{{battery.ratedBatteryCapacity.value}} AH</td>
+            <td>{{battery.specifiedCharge.value}} %</td>
+            <td>{{battery.dimensions}} lwh</td>
+            <td>{{battery.dischargeRate}}</td>
+            <td>{{battery.nominalVoltage.value}} v</td>
+            <td>{{battery.chargingPolicy}}</td>
+            <td>{{battery.operatingTemperature.value}} °C</td>
+            <td>{{battery.manufacturingDate}}</td>
+            <td>{{battery.warrantyPeriod}}</td>
+            <td>{{battery.assetCategory}}</td>
+            <td *ngIf="enable_buttons.includes('P000028') || enable_buttons.includes('P000029')">
+                <div class="d-flex">
+
+                    <button type="button" class="btn btn-outline-warning mr-2 btn-sm" data-toggle="modal"
+                        data-target="#editBatteryModal" (click)="edit(battery)" data-backdrop="static"
+                        data-keyboard="false" *ngIf="enable_buttons.includes('P000028')">
+                        Edit
+                    </button>
+                    <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal"
+                        data-target="#deleteBatteryModal" (click)="delete(battery)" data-backdrop="static"
+                        data-keyboard="false" *ngIf="enable_buttons.includes('P000029')">
+                        Delete
+                    </button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<!-- Edit modal -->
+<div class="modal fade " id="editBatteryModal" tabindex="-1" role="dialog" aria-labelledby="editBatterylabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-info">Edit Battery</h5>
+                <button type="button" class="close text-success" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&#10005;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-edit-battery></app-edit-battery>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete modal -->
+<div class="modal fa-deaf" id="deleteBatteryModal" tabindex="-1" role="dialog" aria-labelledby="deleteBatterylabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" *ngIf="delBattery">
+                <h5 class="modal-title text-info">Are you sure to delete <span
+                        class="text-danger">{{delBattery.batteryId}}</span>
+                </h5>
+                <button type="button" class="close text-success" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&#10005;</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" aria-label="Close">Cancel
+                </button>
+                <button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteBattery()">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
