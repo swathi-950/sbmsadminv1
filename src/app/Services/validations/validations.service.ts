@@ -180,8 +180,6 @@ export class ValidationsService {
       label: "Asset Type",
       err_msg_required: 'Asset access is required'
     }
-
-    
   }
 
   readonly creastesite = {

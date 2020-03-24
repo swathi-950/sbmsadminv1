@@ -1,20 +1,19 @@
-<div class="wrapper">
-
-  <!-- Side Nav Bar -->
-  <div class="sidebar">
-    <app-sidebar></app-sidebar>
-  </div>
-
   <div id="content">
     <!-- Nav Bar -->
     <app-navbar></app-navbar>
+    <br/>
     <!-- components -->
-    <div class="container-fluid height">
-      <router-outlet></router-outlet>
+    <div class="inner-content">
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+          <app-sidebar></app-sidebar>
+        </div>
+        <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
     </div>
     <!-- Footer -->
     <app-footer></app-footer>
 
   </div>
-
-</div>

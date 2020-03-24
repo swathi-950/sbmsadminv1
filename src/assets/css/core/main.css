@@ -1,11 +1,10 @@
-.wrapper {
+/* .wrapper {
     display: flex;
     width: 100%;
     position: relative;
 }
 
 #content {
-    width: calc(100% - var(--sideBar-width));
     min-height: 100vh;
     transition: all 0.3s;
     position: absolute;
@@ -15,9 +14,10 @@
 
 #content.active {
     width: 100%;
-}
+} */
 
-.height {
-    min-height: calc(100vh - var(--navBar-height));
+.inner-content {
+    min-height: calc(65vh - var(--navBar-height));
+    margin: 0% 8%;
 }
 

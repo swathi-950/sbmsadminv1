@@ -5,6 +5,7 @@ import { User, Country, State, City, RoleName } from 'src/app/share/modal/modal'
 import { UserService } from 'src/app/Services/roles/user.service';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
 import { AssetService } from 'src/app/Services/asset.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-userlist',
@@ -29,7 +30,8 @@ export class UserlistComponent implements OnInit {
   constructor(private user: UserService,
     private toastr: ToastrService,
     private auth: AuthenticationService,
-    private asset_ser: AssetService) {
+    private asset_ser: AssetService,
+    private router: Router) {
     this.asset_ser.getAssetCategoryList().subscribe();
   }
 
@@ -37,6 +39,10 @@ export class UserlistComponent implements OnInit {
     this.getUsers();
     this.subscribe_user_List();
     this.sub_auth_permission();
+  }
+
+  addNewUser() {
+    this.router.navigate(['/user-management/users/create-users'])
   }
 
   sub_auth_permission() {

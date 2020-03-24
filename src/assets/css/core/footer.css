@@ -10,12 +10,12 @@ footer {
   padding: 25px;
 }
 
-/* .footer-title {
+.footer-title {
   height: 29px;
   color: #FFF;
   font-size: 25px;
   font-weight: 500;
-} */
+}
 
 .f-boreder {
   height: 4px;
@@ -48,16 +48,16 @@ a {
   color: #C4C4C4;
 }
 
-.footer-icons {
-  padding: 10px;
-  background-color: var(--icon-color);
-  margin: 2px;
-  cursor: pointer;
+.footer-icons{
+    padding: 10px;
+    background-color: var(--icon-color);
+    margin: 2px;
+    cursor: pointer;
 }
 
-.footer-icons i {
-  min-width: 25px;
-  justify-content: center;
-  text-align: center;
-  height: auto;
+.footer-icons i{
+    min-width: 25px;
+    justify-content: center;
+    text-align: center;
+    height: auto;
 }

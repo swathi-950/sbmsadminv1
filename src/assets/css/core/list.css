@@ -1,0 +1,47 @@
+.info {
+  color: #1D1D56;
+  font-weight: 700;
+  position: absolute;
+ margin-top: -3px;
+}
+
+
+
+
+.form-inline.form-group {
+  background-color: rgba(0, 0, 0, 0.06);
+  color: black;
+  border: none;
+
+}
+
+.form-inline .form-control {
+  display: inline-block;
+  width: auto;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 0;
+}
+
+.searchbox {
+  float: right;
+
+}
+
+.searchTerm {
+  font-size: 12px;
+  box-shadow: none;
+  color: #949494;
+}
+
+
+
+
+.btn-add {
+  background-color: #4BD35E;
+  color: #FFF;
+  font-size: 14px;
+  border-radius: 3px;
+  padding: 12px 12px;
+  font-weight: 500;
+}

@@ -13,7 +13,7 @@ a:focus {
   border-radius: 0;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   height: var(--navBar-height);
-  margin-bottom: var(--narBar-bottom-margin);
+  /* margin-bottom: var(--narBar-bottom-margin); */
   color: var(--navBar-color);
 }
 

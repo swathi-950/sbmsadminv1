@@ -38,13 +38,11 @@ export class NavbarComponent implements OnInit {
     window(windowSize: Number) {
         if (windowSize < 991) {
             $(document).ready(function () {
-                $("#sidebar, #content").addClass('active');
                 $(".navbarTitle").hide("fast");
                 $("#navbarTitleSmall").show();
             });
         } else {
             $(document).ready(function () {
-                $("#sidebar, #content").removeClass('active');
                 $(".navbarTitle").show("fast");
                 $("#navbarTitleSmall").hide();
             });
@@ -52,11 +50,11 @@ export class NavbarComponent implements OnInit {
     }
 
 
-    showSideBar() {
-        $(document).ready(function () {
-            $("#sidebar, #content").toggleClass('active');
-        });
-    }
+    // showSideBar() {
+    //     $(document).ready(function () {
+    //         $("#sidebar, #content").toggleClass('active');
+    //     });
+    // }
 
     logout() {
         this.auth.logout();

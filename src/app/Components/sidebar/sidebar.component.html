@@ -1,78 +1,94 @@
 <nav id="sidebar">
 
-  <!-- Logo with close bar -->
-  <div class="sidebar-brand text-center">
-    <a [routerLink]="['/']" routerLinkActive="active">
-      <img src="assets/Images/logo.png" height="45" alt="SBMS logo">
-    </a>
-  </div>
-
-  <hr>
-
   <!-- User Info -->
   <div class="sidebar-header">
     <div class="user-pic">
-      <img class="img-responsive img-rounded"
-        src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
-        alt="User picture">
+      <img class="img-responsive img-rounded" src="./../../../assets/Images/user_Image.png" alt="User picture">
     </div>
     <div class="user-info">
-      <span class="user-name">
+      <div class="user-name">
         <strong class="text-capitalize">{{userName}}</strong>
-      </span>
-      <span class="user-role">{{roleName}}</span>
-      <span class="user-status">
-        <i class="fa fa-circle"></i>
-        <span>Online</span>
-      </span>
+      </div>
+      <div class="d-flex">
+        <span class="text">Logged as a <span class="user-role">Administrator{{roleName}}</span></span>
+      </div>
     </div>
   </div>
+
+  <hr class="mb-0" />
 
   <ul class="list-unstyled components my-2">
 
     <li>
-      <a [routerLink]="[ '/dashboard' ]" routerLinkActive="active">Dashboard</a>
+      <a [routerLink]="[ '/dashboard' ]" routerLinkActive="active">
+        <span class="align-self-center mr-2">
+          <img src="assets/Images/dristia_logo_icon.png" alt="" width="20">
+        </span>
+        Dashboard
+      </a>
     </li>
 
     <!-- userManagement -->
-    <li
-      *ngIf="permissionsIds.includes('P000012') || permissionsIds.includes('P00009') || permissionsIds.includes('P00008') || permissionsIds.includes('P00005') || permissionsIds.includes('P00004') || permissionsIds.includes('P00001')">
-      <a href="#userManagement" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">User Management</a>
+    <li>
+      <a href="#userManagement" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+        <span class="align-self-center mr-2">
+          <img src="assets/Images/dristia_logo_icon.png" alt="" width="20">
+        </span>
+        User Management
+      </a>
 
       <ul class="collapse list-unstyled" id="userManagement">
 
         <!-- users -->
-        <li *ngIf="permissionsIds.includes('P000012') || permissionsIds.includes('P00009')">
+        <li>
           <a href="#users" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <span class="align-self-center mr-2">
+              <img src="assets/Images/dristia_logo_icon.png" alt="" width="20">
+            </span>
             Users
           </a>
           <ul class="collapse list-unstyled" id="users">
-            <li *ngIf="permissionsIds.includes('P000012')">
-              <a id="P000012" [routerLink]="[ '/user-management/users/users-list' ]" routerLinkActive="active">
+            <li>
+              <a [routerLink]="[ '/user-management/users/users-list' ]" routerLinkActive="active">
+                <span class="align-self-center mr-2">
+                  <img src="assets/Images/dristia_logo_icon.png" alt="" width="20">
+                </span>
                 Users List
               </a>
             </li>
-            <li *ngIf="permissionsIds.includes('P00009')">
-              <a id="P00009" [routerLink]="[ '/user-management/users/create-users' ]" routerLinkActive="active">
+            <!--  <li>
+              <a [routerLink]="[ '/user-management/users/create-users' ]" routerLinkActive="active">
+                <span class="align-self-center mr-2">
+                  <img src="assets/Images/dristia_logo_icon.png" alt="" width="20">
+                </span>
                 Create User
               </a>
-            </li>
+            </li> -->
           </ul>
         </li>
 
         <!-- roles -->
         <li *ngIf="permissionsIds.includes('P00008') || permissionsIds.includes('P00005')">
           <a href="#roles" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <span class="align-self-center mr-2">
+              <img src="assets/Images/dristia_logo_icon.png" alt="" width="20">
+            </span>
             Roles
           </a>
           <ul class="collapse list-unstyled" id="roles">
             <li *ngIf="permissionsIds.includes('P00008')">
               <a id="	P00008" [routerLink]="[ '/user-management/roles/roles-list' ]" routerLinkActive="active">
+                <span class="align-self-center mr-2">
+                  <img src="assets/Images/dristia_logo_icon.png" alt="" width="20">
+                </span>
                 Roles List
               </a>
             </li>
             <li *ngIf="permissionsIds.includes('P00005')">
               <a id="P00005" [routerLink]="[ '/user-management/roles/create-roles' ]" routerLinkActive="active">
+                <span class="align-self-center mr-2">
+                  <img src="assets/Images/dristia_logo_icon.png" alt="" width="20">
+                </span>
                 Create Role
               </a>
             </li>
@@ -82,18 +98,27 @@
         <!-- permissions -->
         <li *ngIf="permissionsIds.includes('P00004') || permissionsIds.includes('P00001')">
           <a href="#permissions" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <span class="align-self-center mr-2">
+              <img src="assets/Images/dristia_logo_icon.png" alt="" width="20">
+            </span>
             Permissions
           </a>
           <ul class="collapse list-unstyled" id="permissions">
             <li *ngIf="permissionsIds.includes('P00004')">
               <a id="P00004" [routerLink]="[ '/user-management/permissions/permissions-list' ]"
                 routerLinkActive="active">
+                <span class="align-self-center mr-2">
+                  <img src="assets/Images/dristia_logo_icon.png" alt="" width="20">
+                </span>
                 Permissions List
               </a>
             </li>
             <li *ngIf="permissionsIds.includes('P00001')">
               <a id="P00001" [routerLink]="[ '/user-management/permissions/create-permissions' ]"
                 routerLinkActive="active">
+                <span class="align-self-center mr-2">
+                  <img src="assets/Images/dristia_logo_icon.png" alt="" width="20">
+                </span>
                 Create Permission
               </a>
             </li>
@@ -107,24 +132,43 @@
     <li
       *ngIf="permissionsIds.includes('P000020') || permissionsIds.includes('P000017') || permissionsIds.includes('P000025') || permissionsIds.includes('P000026')  ">
       <a href="#site-management" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+        <span class="align-self-center mr-2">
+          <img src="assets/Images/dristia_logo_icon.png" alt="" width="20">
+        </span>
         Site Management
       </a>
       <ul class="collapse list-unstyled" id="site-management">
         <li *ngIf="permissionsIds.includes('P000020')">
           <a id="P000020" [routerLink]="['/site-management/site-list']" routerLinkActive="active">
+            <span class="align-self-center mr-2">
+              <img src="assets/Images/dristia_logo_icon.png" alt="" width="20">
+            </span>
             Site List
           </a>
         </li>
         <li *ngIf="permissionsIds.includes('P000017')">
-          <a id="P000017" [routerLink]="['/site-management/add-site']" routerLinkActive="active">Create Site</a>
+          <a id="P000017" [routerLink]="['/site-management/add-site']" routerLinkActive="active">
+            <span class="align-self-center mr-2">
+              <img src="assets/Images/dristia_logo_icon.png" alt="" width="20">
+            </span>
+            Create Site
+          </a>
         </li>
         <li *ngIf="permissionsIds.includes('P000025')">
-          <a id="P000025" [routerLink]="['/site-management/site-arc' ]" routerLinkActive="active">Create Site
-            Architecture</a>
+          <a id="P000025" [routerLink]="['/site-management/site-arc' ]" routerLinkActive="active">
+            <span class="align-self-center mr-2">
+              <img src="assets/Images/dristia_logo_icon.png" alt="" width="20">
+            </span>
+            Create Site Architecture
+          </a>
         </li>
         <li *ngIf="permissionsIds.includes('P000026')">
-          <a id="P000026" [routerLink]="['/site-management/site-req' ]" routerLinkActive="active">Create Site
-            Requirement</a>
+          <a id="P000026" [routerLink]="['/site-management/site-req' ]" routerLinkActive="active">
+            <span class="align-self-center mr-2">
+              <img src="assets/Images/dristia_logo_icon.png" alt="" width="20">
+            </span>
+            Create Site Requirement
+          </a>
         </li>
       </ul>
     </li>
@@ -133,6 +177,9 @@
     <li
       *ngIf="permissionsIds.includes('P000016') || permissionsIds.includes('P000013') || permissionsIds.includes('P000024') || permissionsIds.includes('P000021')">
       <a href="#assertManagement" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+        <span class="align-self-center mr-2">
+          <img src="assets/Images/dristia_logo_icon.png" alt="" width="20">
+        </span>
         Asset Management
       </a>
       <ul class="collapse list-unstyled" id="assertManagement">
@@ -140,18 +187,27 @@
         <!-- asset category -->
         <li *ngIf="permissionsIds.includes('P000016') || permissionsIds.includes('P000013')">
           <a href="#assetCategory" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <span class="align-self-center mr-2">
+              <img src="assets/Images/dristia_logo_icon.png" alt="" width="20">
+            </span>
             Asset Category
           </a>
           <ul class="collapse list-unstyled" id="assetCategory">
             <li *ngIf="permissionsIds.includes('P000016')">
               <a id="P000016" [routerLink]="[ '/asset-management/assetcategory/asset-category-list' ]"
                 routerLinkActive="active">
+                <span class="align-self-center mr-2">
+                  <img src="assets/Images/dristia_logo_icon.png" alt="" width="20">
+                </span>
                 Asset Category List
               </a>
             </li>
             <li *ngIf="permissionsIds.includes('P000013')">
               <a id="P000013" [routerLink]="[ '/asset-management/assetcategory/add-asset-category' ]"
                 routerLinkActive="active">
+                <span class="align-self-center mr-2">
+                  <img src="assets/Images/dristia_logo_icon.png" alt="" width="20">
+                </span>
                 Create Asset Category
               </a>
             </li>
