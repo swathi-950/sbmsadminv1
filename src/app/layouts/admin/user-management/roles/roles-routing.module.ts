@@ -11,7 +11,7 @@ const routes: Routes = [
     path: '', component: RolesComponent, children: [
       { path: '', redirectTo: 'roles-list' },
       { path: 'roles-list', component: RolesListComponent },
-      { path: 'create-roles', component: CreateRolesComponent, canActivate: [RoleGuard] }
+      { path: 'create-roles', component: CreateRolesComponent, /* canActivate: [RoleGuard] */ }
     ]
   }
 ];

@@ -177,9 +177,11 @@ export class ValidationsService {
       err_msg_required: 'Role is required'
     },
     assetAccess: {
-      label: "Asset Access",
+      label: "Asset Type",
       err_msg_required: 'Asset access is required'
     }
+
+    
   }
 
   readonly creastesite = {

@@ -292,27 +292,11 @@
 
     </div>
 
-    <!-- assetAccess Selection -->
-    <!-- <div class="form-group col-md-4"> -->
-
-    <!-- label -->
-    <!--  <label for="assetAccess">{{validation.assetAccess.label}}</label> -->
-
-    <!-- Input Checkbox Control -->
-    <!--     <div class="d-flex">
-        <div class="custom-control custom-checkbox mr-2" formArrayName="form_assetsList"
-          *ngFor="let asset of userForm.controls.form_assetsList?.value;let i = index;">
-          <input class="custom-control-input" type="checkbox" id="{{asset.assetCategoryId}}" [checked]="asset.checked"
-            (change)="onCheckboxCategoryChange($event,i)">
-          <label class="custom-control-label" for="{{asset.assetCategoryId}}">{{asset.categoryName}}</label>
-        </div>
-      </div>
-
-    </div> -->
 
   </div>
   <!-- 5th row -->
-  <p class="main">Asset Type</p>
+  <!-- assetAccess Selection -->
+  <label for="assetAccess" class="main">{{validation.assetAccess.label}}</label>
   <hr>
   <div class="form-group row">
     <!-- Input Checkbox Control -->
@@ -326,19 +310,17 @@
     </div>
   </div>
 
-  <!-- 5th row -->
+  <!-- 6th row -->
+  <p class="main">User Permissions</p>
+  <hr>
   <div class="form-group row">
 
-    <!-- Label -->
-    <div class="col-2">
-      <label for="permission" class="col-form-label">Permissions</label>
-    </div>
 
     <!-- Input Checkbox Control -->
     <div class="col-10 d-flex">
 
       <div class="col-6">
-        <h5 class="text-info">Read Permissions</h5>
+        <h5>Read Permissions</h5>
 
         <!-- read -->
         <div class="custom-control custom-checkbox" formArrayName="readPermissions"
@@ -351,7 +333,7 @@
       </div>
 
       <div class="col-6">
-        <h5 class="text-success">Wirte Permissions</h5>
+        <h5>Wirte Permissions</h5>
         <!-- write -->
         <div class="custom-control custom-checkbox" formArrayName="writePermissions"
           *ngFor="let write_per of userForm.controls.writePermissions?.value; let i=index">
@@ -365,7 +347,7 @@
   </div>
 
   <!-- Submit Button -->
-  <div class="d-flex justify-content-end">
+  <div class="d-flex justify-content-start">
     <button type="submit" class="btn btn-primary" [disabled]="spin">
       <span class="spinner-border spinner-border-sm" *ngIf="spin" role="status" aria-hidden="true"></span>
       Submit

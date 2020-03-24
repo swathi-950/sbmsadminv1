@@ -51,6 +51,26 @@ button:focus {
   outline: 0px auto -webkit-focus-ring-color !important;
 }
 
+.main {
+  color: #1D1D56;
+  font-size: 18px;
+}
+
+h5 {
+  color: #FA9917;
+  font-size: 18px;
+}
+
+.searchbox {
+  float: right;
+
+}
+
+.searchTerm {
+  background-color: #F8F8F9;
+
+}
+
 /* Table thead background color */
 .table .thead-dark th {
   background-color: #374559 !important;
