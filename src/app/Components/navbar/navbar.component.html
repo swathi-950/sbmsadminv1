@@ -4,8 +4,14 @@
     <!-- <button type="button" id="sidebarCollapse" class="sidebarButton pl-0" (click)="showSideBar()">
       <span><i class="fas fa-bars fa-lg"></i></span>
     </button> -->
+    <!--  <div>
+      <img src="assets/Images/logo.png" alt="" width="120" height="35" class="mr-3">
+    </div> -->
+    <!-- Navbar Default logo Part with navigation before login-->
     <div>
-      <img src="assets/Images/Logo.png" alt="" width="120" height="35" class="mr-3">
+      <a class="navbar-brand mr-5" [routerLink]="['/']" routerLinkActive="active">
+        <img src="assets/Images/logo.png" height="35" alt="Drista logo">
+      </a>
     </div>
     <div>
       <h5 class="navbarTitle mb-0">Smart Battery Management System</h5>
@@ -36,8 +42,8 @@
 
       <div class="btn-group">
         <!-- <span *ngIf="userName" class="text-capitalize mr-2">{{userName}}</span> -->
-        <span style="color: #bdbdbd;cursor: pointer;" data-toggle="dropdown" data-display="static"
-          aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i></span>
+        <span style="color: #bdbdbd;cursor: pointer;" data-toggle="dropdown" data-display="static" aria-haspopup="true"
+          aria-expanded="false"><i class="fas fa-user"></i></span>
         <div class="dropdown-menu dropdown-menu-right">
           <button class="dropdown-item" type="button" (click)="logout()"><span class="mr-2"><i
                 class="fas fa-sign-out-alt"></i></span>Logout</button>
@@ -47,3 +53,17 @@
 
   </div>
 </nav>
+
+<!-- Navbar for organization name -->
+<div class="container-fluid bg-light-sub">
+  <div>
+    <div class="row mx-5 py-3 px-5">
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 px-2">
+        <span class="user">Administrator </span>
+        <span style="color: #ccc;font-weight: bolder;"> > </span>
+        <span class="uName">A Reddy</span>
+      </div>
+    </div>
+
+  </div>
+</div>
