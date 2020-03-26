@@ -1,0 +1,11 @@
+.btn {
+  height: 55px;
+  border-radius: 3px;
+  min-width: 16%;
+}
+
+.btn:focus,
+.btn-primary:focus {
+  box-shadow: none !important;
+  outline: 0px;
+}

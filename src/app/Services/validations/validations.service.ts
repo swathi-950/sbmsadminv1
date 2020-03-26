@@ -177,7 +177,7 @@ export class ValidationsService {
       err_msg_required: 'Role is required'
     },
     assetAccess: {
-      label: "Asset Type",
+      label: "Asset Access",
       err_msg_required: 'Asset access is required'
     }
   }

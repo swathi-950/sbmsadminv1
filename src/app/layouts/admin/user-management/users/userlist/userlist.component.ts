@@ -45,6 +45,7 @@ export class UserlistComponent implements OnInit {
     this.router.navigate(['/user-management/users/create-users'])
   }
 
+
   sub_auth_permission() {
     this.auth.permissions.subscribe(val => {
       if (val.length != 0) {

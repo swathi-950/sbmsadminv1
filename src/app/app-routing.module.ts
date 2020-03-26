@@ -8,7 +8,7 @@ import { AuthGaurdService } from './Services/auth-guard.service';
 const routes: Routes = [
   { path: 'signIn', loadChildren: () => import('./signin/signin.module').then(m => m.SigninModule) },
   {
-    path: '', component: AdminComponent, /* canActivate: [AuthGaurdService], */
+    path: '', component: AdminComponent, canActivate: [AuthGaurdService],
     children: [
       { path: '', loadChildren: () => import('./layouts/admin/admin.module').then(m => m.AdminModule) }
     ]

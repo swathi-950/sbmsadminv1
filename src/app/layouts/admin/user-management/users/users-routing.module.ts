@@ -11,7 +11,7 @@ const routes: Routes = [
     path: '', component: UsersComponent, children: [
       { path: '', redirectTo: 'users-list' },
       { path: 'users-list', component: UserlistComponent },
-      { path: 'create-users', component: CreateUsersComponent, /* canActivate: [UserGuard] */ }
+      { path: 'create-users', component: CreateUsersComponent, canActivate: [UserGuard] }
     ]
   }
 ];

@@ -25,7 +25,6 @@ a:focus {
 .navbarTitle {
   font-size: var(--navBar-title);
   font-weight: 700;
-  color: var(--navBar-color);
 }
 
 .line {
@@ -45,6 +44,8 @@ a:focus {
   outline: none;
 }
 
+/* second navbar styles */
+
 .bg-light-sub {
   background-color: var(--subnavBar-bg);
 }
@@ -59,4 +60,11 @@ a:focus {
   color: #FA9917;
   font-size: 16px;
   font-weight: 700;
+  padding-left: 10px;
+}
+
+.symbol {
+  color: #ccc;
+  font-weight: bolder;
+  padding-left: 10px;
 }

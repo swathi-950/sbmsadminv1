@@ -29,7 +29,8 @@
     </li>
 
     <!-- userManagement -->
-    <li>
+    <li
+      *ngIf="permissionsIds.includes('P000012') || permissionsIds.includes('P00009') || permissionsIds.includes('P00008') || permissionsIds.includes('P00005') || permissionsIds.includes('P00004') || permissionsIds.includes('P00001')">
       <a href="#userManagement" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
         <span class="align-self-center mr-2">
           <img src="assets/Images/dristia_logo_icon.png" alt="" width="20">
@@ -40,7 +41,7 @@
       <ul class="collapse list-unstyled" id="userManagement">
 
         <!-- users -->
-        <li>
+        <li *ngIf="permissionsIds.includes('P000012') || permissionsIds.includes('P00009')">
           <a href="#users" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
             <span class="align-self-center mr-2">
               <img src="assets/Images/dristia_logo_icon.png" alt="" width="20">
@@ -48,16 +49,16 @@
             Users
           </a>
           <ul class="collapse list-unstyled" id="users">
-            <li>
-              <a [routerLink]="[ '/user-management/users/users-list' ]" routerLinkActive="active">
+            <li *ngIf="permissionsIds.includes('P000012')">
+              <a id="P000012" [routerLink]="[ '/user-management/users/users-list' ]" routerLinkActive="active">
                 <span class="align-self-center mr-2">
                   <img src="assets/Images/dristia_logo_icon.png" alt="" width="20">
                 </span>
                 Users List
               </a>
             </li>
-            <!--  <li>
-              <a [routerLink]="[ '/user-management/users/create-users' ]" routerLinkActive="active">
+           <!--  <li *ngIf="permissionsIds.includes('P00009')">
+              <a id="P00009" [routerLink]="[ '/user-management/users/create-users' ]" routerLinkActive="active">
                 <span class="align-self-center mr-2">
                   <img src="assets/Images/dristia_logo_icon.png" alt="" width="20">
                 </span>

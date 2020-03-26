@@ -20,7 +20,6 @@ textarea {
 }
 
 .form-control:focus {
-  /* box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, .25) !important; */
   box-shadow: none !important;
 }
 
@@ -32,6 +31,29 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
 }
+
+/* check box start */
+
+.custom-checkbox .custom-control-label::before {
+  border-radius: .25rem;
+  border-radius: 3px;
+  background-color: #E0E0E0;
+  border: 1px solid #828282;
+  box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.15);
+}
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::after {
+  border-radius: 3px;
+  background-color: #1D1D56;
+  border: 1px solid #828282;
+  box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.15);
+}
+
+.custom-control-input:focus~.custom-control-label::before {
+  box-shadow: none !important;
+}
+
+/* check box end */
 
 .mandetory {
   color: red;
@@ -47,19 +69,6 @@ select {
   border-radius: 5px;
 }
 
-button:focus {
-  outline: 0px auto -webkit-focus-ring-color !important;
-}
-
-.main {
-  color: #1D1D56;
-  font-size: 18px;
-}
-
-h5 {
-  color: #FA9917;
-  font-size: 18px;
-}
 /* Table thead background color */
 .table .thead-dark th {
   background-color: #374559 !important;
@@ -68,4 +77,15 @@ h5 {
 .has-float-label .form-control:placeholder-shown:not(:focus)+* {
   font-size: 120% !important;
   top: 0.9em !important;
+}
+
+
+/* form-header */
+.form-header {
+  color: #1D1D56;
+}
+
+/* form-content */
+.permissions-head {
+  color: #FA9917;
 }

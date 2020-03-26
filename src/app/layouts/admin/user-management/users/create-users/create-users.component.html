@@ -1,6 +1,6 @@
 <!-- Component Title -->
-<h4 class="text-capitalize p-2">create User</h4>
-<hr class="mx-2">
+<h5 class="text-capitalize p-2 mb-0 form-header">create User</h5>
+<hr class="mx-2 my-1">
 
 <!-- Form Starts -->
 <form class="p-2" [formGroup]="userForm" (ngSubmit)="onSubmit()">
@@ -17,7 +17,7 @@
         <input type="text" class="form-control" id="firstName" name="firstName" formControlName="firstName"
           placeholder="{{validation.firstName.label}}" autocomplete="off"
           maxlength="{{validation.firstName.maxLength}}">
-        <label>{{validation.firstName.label}}</label>
+        <label for="firstName">{{validation.firstName.label}}</label>
       </span>
 
 
@@ -42,7 +42,7 @@
         <input type="text" class="form-control" id="lastName" name="lastName"
           placeholder="{{validation.lastName.label}}" formControlName="lastName" autocomplete="off"
           maxlength="{{validation.lastName.maxlength}}">
-        <label>{{validation.lastName.label}}</label>
+        <label for="lastName">{{validation.lastName.label}}</label>
       </span>
 
       <!-- Error Message -->
@@ -84,8 +84,6 @@
 
   <!-- 2nd Row -->
   <div class="form-row">
-
-
 
     <!-- Email Id -->
     <div class="form-group col-md-4">
@@ -292,48 +290,56 @@
 
     </div>
 
-
   </div>
-  <!-- 5th row -->
-  <!-- assetAccess Selection -->
-  <label for="assetAccess" class="main">{{validation.assetAccess.label}}</label>
-  <hr>
-  <div class="form-group row">
-    <!-- Input Checkbox Control -->
-    <div class="d-flex">
-      <div class="custom-control custom-checkbox mr-2" formArrayName="form_assetsList"
+
+  <!-- asset Access -->
+  <h5 class="text-capitalize p-2 mb-0 form-header">{{validation.assetAccess.label}}</h5>
+  <hr class="mx-2 my-1">
+  <div class="col-12 my-2">
+    <!-- assetAccess Selection -->
+    <div class="row mx-0">
+
+      <!-- Input Checkbox Control -->
+      <div class="custom-control custom-checkbox col-md-4" formArrayName="form_assetsList"
         *ngFor="let asset of userForm.controls.form_assetsList?.value;let i = index;">
         <input class="custom-control-input" type="checkbox" id="{{asset.assetCategoryId}}" [checked]="asset.checked"
           (change)="onCheckboxCategoryChange($event,i)">
         <label class="custom-control-label" for="{{asset.assetCategoryId}}">{{asset.categoryName}}</label>
       </div>
+
+      <!-- <div class="custom-control custom-checkbox col-md-4">
+        <input class="custom-control-input" type="checkbox" id="Heavy Engineering">
+        <label class="custom-control-label" for="Heavy Engineering">Heavy Engineering</label>
+      </div> -->
+
     </div>
+
   </div>
 
-  <!-- 6th row -->
-  <p class="main">User Permissions</p>
-  <hr>
+  <!-- Permissions -->
+  <h5 class="text-capitalize p-2 mb-0 form-header">Permissions</h5>
+  <hr class="mx-2 my-1">
+
   <div class="form-group row">
 
-
     <!-- Input Checkbox Control -->
-    <div class="col-10 d-flex">
+    <div class="col-12 d-flex my-1">
 
       <div class="col-6">
-        <h5>Read Permissions</h5>
+        <h5 class="permissions-head">Read Permissions</h5>
 
         <!-- read -->
-        <div class="custom-control custom-checkbox" formArrayName="readPermissions"
+        <!-- <div class="custom-control custom-checkbox" formArrayName="readPermissions"
           *ngFor="let read_Per of userForm.controls.readPermissions?.value; let i=index">
           <input type="checkbox" class="custom-control-input" id="{{read_Per.id}}" [checked]="read_Per.checked"
             (change)="onCheckboxChangeRead($event,i)">
           <label class="custom-control-label" for="{{read_Per.id}}">{{read_Per.name}}</label>
-        </div>
+        </div> -->
 
       </div>
 
       <div class="col-6">
-        <h5>Wirte Permissions</h5>
+        <h5 class="permissions-head">Wirte Permissions</h5>
         <!-- write -->
         <div class="custom-control custom-checkbox" formArrayName="writePermissions"
           *ngFor="let write_per of userForm.controls.writePermissions?.value; let i=index">
@@ -347,7 +353,7 @@
   </div>
 
   <!-- Submit Button -->
-  <div class="d-flex justify-content-start">
+  <div class="">
     <button type="submit" class="btn btn-primary" [disabled]="spin">
       <span class="spinner-border spinner-border-sm" *ngIf="spin" role="status" aria-hidden="true"></span>
       Submit

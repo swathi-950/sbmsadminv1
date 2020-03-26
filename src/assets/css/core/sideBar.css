@@ -91,8 +91,9 @@ hr {
   text-decoration: none;
   color: #4F4F4F;
   font-size: 16px;
-  font-weight: 700;
   line-height: 39px;
+  margin-bottom: 2px;
+  margin-top: 2px;
 }
 
 .components>li {
@@ -102,10 +103,13 @@ hr {
 
 .components>li>ul {
   background-color: #fff;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 #sidebar ul li a.active {
   color: #000;
+  font-weight: 700;
 }
 
 #sidebar ul li a:hover {
@@ -118,7 +122,7 @@ a {
   color: var(--sideBar-list-color);
 }
 
-a[aria-expanded="true"]{
+a[aria-expanded="true"] {
   color: #333;
   font-weight: 900;
 }
@@ -129,16 +133,21 @@ a[data-toggle="collapse"] {
 
 .dropdown-toggle::after {
   position: absolute;
-  top: 50%;
+  top: 35%;
   right: 20px;
+  border: 3px solid #000 !important;
+  display: inline-block !important;
+  border-width: 0 1px 1px 0 !important;
+  padding: 5px !important;
 }
 
 .dropdown-toggle[aria-expanded=false]::after {
   transition: all .2s ease-in-out;
-  transform: rotate(-90deg);
+  transform: rotate(-45deg);
 }
 
 .dropdown-toggle[aria-expanded=true]::after {
+  transform: rotate(45deg);
   transition: all .2s ease-in-out;
 }
 
