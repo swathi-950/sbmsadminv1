@@ -18,9 +18,8 @@ footer {
 }
 
 .f-boreder {
-  height: 4px;
   width: 83px;
-  background-color: #048CD1;
+  border-top: 4px solid #048CD1;
 }
 
 .f-aboutUs-content {

@@ -1,0 +1,66 @@
+select {
+  height: 40px !important;
+  font-size: 12px !important;
+  background-size: 12px;
+  background-position: 92%;
+}
+
+.battery-list {
+  font-size: 14px;
+}
+
+.map-marker {
+  font-size: smaller;
+  color: #bdbdbd;
+  margin-right: 5px;
+}
+
+.border-radius-left {
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.border-radius-right {
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.battery-details {
+  font-size: 12px;
+  color: #bdbdbd;
+  line-height: 14px;
+}
+
+.battery-num {
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 29px;
+}
+
+strong {
+  color: #4F4F4F;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 29px;
+}
+
+.battery-details-2 {
+  font-size: 16px;
+  color: #bdbdbd;
+  line-height: 14px;
+}
+
+h5 {
+  color: #333;
+}
+
+.health {
+  font-size: 14px;
+  color: #333;
+}
+
+.consumption {
+  font-size: 16px;
+  color: #bdbdbd;
+  line-height: 19px;
+}

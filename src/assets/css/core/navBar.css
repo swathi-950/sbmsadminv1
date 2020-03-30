@@ -16,6 +16,10 @@ a:focus {
   color: var(--navBar-color);
 }
 
+.bg-light-sub {
+  background-color: var(--subnavBar-bg);
+}
+
 .navbar-btn {
   box-shadow: none;
   outline: none !important;
@@ -44,27 +48,24 @@ a:focus {
   outline: none;
 }
 
-/* second navbar styles */
+/* 2 navbar */
 
-.bg-light-sub {
-  background-color: var(--subnavBar-bg);
-}
-
-.user {
-  color: #0070C0;
-  font-size: 16px;
+#navbar2 {
+  --userType: #0070C0;
+  --userName: #FA9917;
+  --arrow: #bdbdbd;
   font-weight: 700;
+  line-height: 19px;
 }
 
-.uName {
-  color: #FA9917;
-  font-size: 16px;
-  font-weight: 700;
-  padding-left: 10px;
+#navbar2 .user {
+  color: var(--userType);
 }
 
-.symbol {
-  color: #ccc;
-  font-weight: bolder;
-  padding-left: 10px;
+#navbar2 .uName {
+  color: var(--userName);
+}
+
+#navbar2 .arrow {
+  color: var(--arrow);
 }

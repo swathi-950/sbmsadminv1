@@ -3,8 +3,11 @@ import { FormBuilder, Validators, FormArray, FormControl } from '@angular/forms'
 import { ToastrService } from 'ngx-toastr';
 
 import { UserService } from 'src/app/Services/roles/user.service';
-import { State, City, RoleName, Country, User, permissionsList } from 'src/app/share/modal/modal';
+import { State, City, RoleName, Country, User, permissionsList, AssetCategory } from 'src/app/share/modal/modal';
 import { RoleService } from 'src/app/Services/roles/role.service';
+import { AssetService } from 'src/app/Services/asset.service';
+import { AuthenticationService } from 'src/app/Services/authentication.service';
+import { ValidationsService } from 'src/app/Services/validations/validations.service';
 
 @Component({
   selector: 'app-edit-user',
@@ -18,6 +21,7 @@ export class EditUserComponent implements OnInit {
     lastName: 16,
     phoneNumber: 10,
   }
+  validation;
   selectedUser: User;
   id;
   countries: Country[] = [];
@@ -28,9 +32,12 @@ export class EditUserComponent implements OnInit {
   extensionNumber = '';
   extensionNo: any;
   permissions = [];
+  assets = [];
   permissionsList: permissionsList[] = [];
   readPermissions = [];
   writePermissions = [];
+
+  assetsList: AssetCategory[] = [];
   /*  country: null;
    state: null;
    city: null; */
@@ -45,22 +52,34 @@ export class EditUserComponent implements OnInit {
     role: ['', [Validators.required]],
     permissionsId: this.fb.array([]),
     readPermissions: this.fb.array([]),
-    writePermissions: this.fb.array([])
+    writePermissions: this.fb.array([]),
+    assetCategoryId: this.fb.array([]),
+    form_assetsList: this.fb.array([])
   });
 
   constructor(private fb: FormBuilder,
     private userService: UserService,
     private toastr: ToastrService,
-    private roleService: RoleService) {
+    private roleService: RoleService,
+    private ser_asset: AssetService,
+    private auth: AuthenticationService,
+    private validation_ser: ValidationsService) {
   }
 
   ngOnInit(): void {
+    this.getValidations();
     this.getCountries();
+    this.getAssetCategory();
     this.getRoles();
     this.getPermissionsWith_Read_wirte();
     this.subRolelistById();
     this.sub_copy_edit_User();
   }
+
+  getValidations() {
+    this.validation = this.validation_ser.userCreation;
+  }
+
 
   sub_copy_edit_User() {
     this.userService.copyEditUser.subscribe(res => {
@@ -72,14 +91,69 @@ export class EditUserComponent implements OnInit {
       this.userForm.controls['state'].setValue(res.state);
       this.userForm.controls['city'].setValue(res.city);
       this.userForm.controls['role'].setValue(res.role);
+
+
       this.selectedUser = res;
-      console.log("this.selectedUser",this.selectedUser);
+      console.log("this.selectedUser", this.selectedUser);
       this.permissions = res.permissionsId;
+      this.assets = res.assetCategoryId;
+      /*  this.form_assetsList = res.assetCategoryId; */
       /* call countires states cities on change */
       this.init_country_state_city();
       /*   this.userForm.controls['permissions'].patchValue(res.permissions); */
       this.selectCheckBox();
+      this.selectAssetCheckbox();
+
     })
+  }
+
+  /* get asset list */
+  getAssetCategory() {
+    this.ser_asset.getAssetCategoryList().subscribe();
+    this.ser_asset.assetCategoryList.subscribe(val => {
+      if (val.length != 0) {
+        this.assetsList = val;
+        console.log(this.assetsList);
+        this.init_asset_checkbox();
+      }
+    })
+  }
+
+  init_asset_checkbox() {
+    const asset_list: FormArray = this.userForm.get('form_assetsList') as FormArray;
+    asset_list.controls = [];
+    for (let i = 0; i < this.assetsList.length; i++) {
+      asset_list.push(new FormControl({
+        'checked': false,
+        'assetCategoryId': this.assetsList[i].assetCategoryId,
+        'categoryName': this.assetsList[i].categoryName,
+      }))
+    };
+  }
+
+  selectAssetCheckbox() {
+    const asset_list = this.userForm.get('form_assetsList') as FormArray;
+    for (let i = 0; i < asset_list.length; i++) {
+      asset_list.value[i]['checked'] = false;
+    }
+    for (let i = 0; i < this.assetsList.length; i++) {
+      for (let k = 0; k < this.assets.length; k++) {
+        console.log("asset with id", asset_list.value[i]['assetCategoryId']);
+        if (asset_list.value[i]['assetCategoryId'] == this.assets[k]) {
+          asset_list.value[i]['checked'] = true;
+        }
+      }
+    }
+  }
+
+  onCheckboxCategoryChange(event, i) {
+    const assetCategoryId: FormArray = this.userForm.get('form_assetsList') as FormArray;
+    if (event.target.checked) {
+      assetCategoryId.value[i]['checked'] = true;
+    } else {
+      assetCategoryId.value[i]['checked'] = false;
+    }
+
   }
 
   getPermissionsWith_Read_wirte() {
@@ -269,8 +343,6 @@ export class EditUserComponent implements OnInit {
     const read_permissions = this.userForm.get('readPermissions') as FormArray;
     for (let i = 0; i < this.readPermissions.length; i++) {
       for (let j = 0; j < this.permissions.length; j++) {
-        console.log("read_permissions.value[i]['permissionId']----- ", read_permissions.value[i]['permissionId']);
-        console.log("this.permissions[j]--------------------------- ", this.permissions[j]);
         if (read_permissions.value[i]['permissionId'] == this.permissions[j]) {
           read_permissions.value[i]['checked'] = true;
         }
@@ -327,14 +399,29 @@ export class EditUserComponent implements OnInit {
     }
   }
 
+  push_assetList() {
+    const asset_list: FormArray = this.userForm.get('assetCategoryId') as FormArray;
+    const form_assetsList: FormArray = this.userForm.get('form_assetsList') as FormArray;
+    asset_list.controls = [];
+    for (let index = 0; index < this.assetsList.length; index++) {
+      if (form_assetsList.value[index]['checked'] == true) {
+        asset_list.push(new FormControl(form_assetsList.value[index]['assetCategoryId']))
+      }
+    }
+    if (asset_list.length === 0) {
+      return false;
+    } else return true;
+  }
+
   //Update user
   editUser() {
     console.log(this.userForm.value);
     if (this.userForm.invalid) {
-      this.toastr.error("Please fill all fields.", "Error");
-      return
+      this.toastr.error("Please fill all fields", "Error");
+      return false;
     }
     this.push_permissionId();
+    this.push_assetList();
     console.log(this.userForm.value);
     this.userService.updateUsers(this.userForm.value, this.userForm.controls['id'].value).subscribe(
       (res) => {
@@ -346,11 +433,10 @@ export class EditUserComponent implements OnInit {
         $(document).ready(function () {
           $(".close").click();
         });
+        this.userService.getUsers().subscribe();
       }, (err) => {
         console.log(err);
         this.toastr.error(err.error.errorMessage, "Error");
-      }, () => {
-        this.userService.getUsers().subscribe();
       }
     )
   }

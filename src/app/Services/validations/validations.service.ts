@@ -18,7 +18,7 @@ export class ValidationsService {
     },
     password: {
       label: 'Password',
-      minLength: 6,
+      minLength: 4,
       maxLength: 31,
       err_msg_required: 'Password is required',
       err_msg_minLength: 'Password must be atleast 8 characters'

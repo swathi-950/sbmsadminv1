@@ -36,15 +36,12 @@ export class UserlistComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.auth.spiner.next(true);
     this.getUsers();
     this.subscribe_user_List();
     this.sub_auth_permission();
+    this.auth.spiner.next(false);
   }
-
-  addNewUser() {
-    this.router.navigate(['/user-management/users/create-users'])
-  }
-
 
   sub_auth_permission() {
     this.auth.permissions.subscribe(val => {
@@ -104,6 +101,8 @@ export class UserlistComponent implements OnInit {
      } */
   updateUser(user: User) {
     this.user.copyEditUser.next(user);
+    this.router.navigate(['/user-management/users/edit-user']);
+
   }
 
   getCountries() {

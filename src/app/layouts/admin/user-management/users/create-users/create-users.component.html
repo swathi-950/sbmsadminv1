@@ -293,7 +293,7 @@
   </div>
 
   <!-- asset Access -->
-  <h5 class="text-capitalize p-2 mb-0 form-header">{{validation.assetAccess.label}}</h5>
+  <h5 class="form-header">Asset Type</h5>
   <hr class="mx-2 my-1">
   <div class="col-12 my-2">
     <!-- assetAccess Selection -->
@@ -317,28 +317,28 @@
   </div>
 
   <!-- Permissions -->
-  <h5 class="text-capitalize p-2 mb-0 form-header">Permissions</h5>
+  <h5 class="form-header">User Permissions</h5>
   <hr class="mx-2 my-1">
 
   <div class="form-group row">
 
     <!-- Input Checkbox Control -->
-    <div class="col-12 d-flex my-1">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 row my-1">
 
-      <div class="col-6">
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
         <h5 class="permissions-head">Read Permissions</h5>
 
         <!-- read -->
-        <!-- <div class="custom-control custom-checkbox" formArrayName="readPermissions"
+        <div class="custom-control custom-checkbox" formArrayName="readPermissions"
           *ngFor="let read_Per of userForm.controls.readPermissions?.value; let i=index">
           <input type="checkbox" class="custom-control-input" id="{{read_Per.id}}" [checked]="read_Per.checked"
             (change)="onCheckboxChangeRead($event,i)">
           <label class="custom-control-label" for="{{read_Per.id}}">{{read_Per.name}}</label>
-        </div> -->
+        </div>
 
       </div>
 
-      <div class="col-6">
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
         <h5 class="permissions-head">Wirte Permissions</h5>
         <!-- write -->
         <div class="custom-control custom-checkbox" formArrayName="writePermissions"
@@ -347,6 +347,7 @@
             (change)="onCheckboxChangeWrite($event,i)">
           <label class="custom-control-label" for="{{write_per.id}}">{{write_per.name}}</label>
         </div>
+
       </div>
 
     </div>

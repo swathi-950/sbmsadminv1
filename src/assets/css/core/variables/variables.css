@@ -1,13 +1,11 @@
 :root {
   /* nav bar variables */
   --navBar-bg: #144A90;
+  --subnavBar-bg: #F2F2F2;
   --navBar-color: #F2F2F2;
   --navBar-height: 70px;
   --navBar-title: 25px;
   --narBar-bottom-margin: 8px;
-
-  /* Second navbar variables  */
-  --subnavBar-bg: #F2F2F2;
 
   /* side bar variables */
   --sideBar-logo-bg: #374559;

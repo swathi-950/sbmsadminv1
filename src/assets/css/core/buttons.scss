@@ -2,10 +2,55 @@
   height: 55px;
   border-radius: 3px;
   min-width: 16%;
+  border-color: transparent !important;
 }
 
 .btn:focus,
 .btn-primary:focus {
   box-shadow: none !important;
   outline: 0px;
+}
+
+.btn:hover {
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.13);
+}
+
+.btn-primary {
+  background-color: #39F !important;
+}
+
+.btn-success {
+  background-color: #4BD35E !important;
+  height: 46px;
+}
+
+.searchbox {
+  height: 46px;
+  background-color: #F8F8F9;
+}
+
+.searchTerm {
+  height: 46px !important;
+  border: none !important;
+  background-color: transparent !important;
+  color: #bbb;
+  line-height: 18px;
+  padding-left: 10px;
+  margin-bottom: 0px;
+}
+
+.searchbox>span{
+  font-size: 16px;
+  font-weight: 200;
+  padding: 0px 10px;
+  color: #bdbddb;
+}
+
+.searchTerm::placeholder {
+  color: #bbb;
+  text-transform: capitalize;
+}
+
+.searchTerm:focus {
+  outline: none;
 }
